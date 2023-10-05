@@ -1,0 +1,68 @@
+name: backend
+# event on which to run
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - backend/**
+# jobs in this workflow
+jobs:
+  # the testing job
+  test:
+    # Set a timeout in case something get stuck or hang in the tests
+    timeout-minutes: 5
+    # use the latest ubuntu runner
+    runs-on: ubuntu-latest
+    # the steps of the job
+    steps:
+      # get the code from the repository unto the machine
+      - name: Fetch code
+        uses: actions/checkout@v3
+      # use an action to start the mysql service on the runner
+      - uses: shogo82148/actions-setup-mysql@v1
+        with:
+          mysql-version: "8.0"
+          auto-start: true
+      # use cli to create a database and set the root password
+      - name: Setup MySQL
+        run: |
+          mysql -uroot -h127.0.0.1 -e 'SELECT version()'
+          mysql -h 127.0.0.1 -P 3306 -u root -e 'CREATE DATABASE test_db;'
+          mysql -h 127.0.0.1 -P 3306 -u root -e 'SHOW DATABASES;'
+          mysql -h 127.0.0.1 -P 3306 -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';"
+          mysql -h 127.0.0.1 -P 3306 -u root -e 'FLUSH PRIVILEGES' -ppassword
+      # use the cli client to see the database
+      - name: Seed Database
+        working-directory: ./db
+        run: mysql -h 127.0.0.1 -P 3306 -u root -ppassword test_db < init.sql
+      # install node 18
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      # install the application dependencies
+      - name: Install Node dependencies
+        working-directory: ./backend
+        run: npm install
+      # run the tests
+      - name: Run tests
+        env:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_USERNAME: root
+          MYSQL_PASSWORD: password
+          MYSQL_DATABASE: test_db
+          MYSQL_PORT: 3306
+          JWT_KEY: ${{ secrets.JWT_KEY }}
+        working-directory: ./backend
+        run: npm run test
+  deploy:
+    # tests job need to succeed
+    needs: test
+    # use the ubuntu runner
+    runs-on: ubuntu-latest
+    # steps in the job
+    steps:
+      # Make a API call to the Render deploy hook
+      - name: Trigger Deploy on Render
+        run: curl -X GET ${{ secrets.RENDER_BACKEND_TRIGGER }}
