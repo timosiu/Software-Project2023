@@ -1,11 +1,34 @@
+import {} from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+import Homepage from "./homepage/Homepage";
 import "./App.css";
+
+const queryClient = new QueryClient();
 
 // VITE_API_URL
 function App() {
+  const routes = (
+    <Routes>
+      <Route path="/" element={<Homepage />} />
+      <Route path="*" element={<Navigate to="/" />} />
+      {/* additional pages here */}
+    </Routes>
+  );
+
   return (
-    <>
-      <h1>Software-Project2023</h1>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        {/* navigation bar here */}
+        {routes}
+      </Router>
+    </QueryClientProvider>
   );
 }
 
