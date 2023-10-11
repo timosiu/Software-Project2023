@@ -8,6 +8,7 @@ import {
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import Homepage from "./homepage/Homepage";
+import Loginpage from "./loginpage/Loginpage";
 import "./App.css";
 
 const queryClient = new QueryClient();
@@ -17,6 +18,7 @@ function App() {
   const routes = (
     <Routes>
       <Route path="/" element={<Homepage />} />
+      <Route path="/loginpage" element={<Loginpage />} />
       <Route path="*" element={<Navigate to="/" />} />
       {/* additional pages here */}
     </Routes>
