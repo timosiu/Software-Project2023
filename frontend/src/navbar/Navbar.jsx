@@ -5,7 +5,6 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const Links = [
-    { name: "Home", link: "/" },
     { name: "Contact", link: "/" },
     { name: "Login", link: "/loginpage" },
   ];
