@@ -1,4 +1,9 @@
+import { useState } from "react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const Links = [
     { name: "Home", link: "/" },
     { name: "Contact", link: "/" },
@@ -8,7 +13,7 @@ const Navbar = () => {
   return (
     <div className="shadow-md w-full fixed top-0 left-0">
       <div
-        className="md:flex items-center justify-between backdrop-blur backdrop-brightness-2xl py-4
+        className="md:flex items-center justify-between backdrop-blur  py-4
       md:px-4 px-3"
       >
         <div
@@ -17,7 +22,13 @@ const Navbar = () => {
         >
           <a href={"/"}>Hippy Hotel</a>
         </div>
-        <ul className="md:flex md:items-center">
+        <div
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="w-6 text-white hover:text-slate-300 duration-500 md:hidden cursor-pointer absolute right-8 top-5"
+        >
+          {menuOpen ? <XMarkIcon /> : <Bars3Icon />}
+        </div>
+        <ul className={`md:flex md:items-center  ${menuOpen ? "" : "hidden"}`}>
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 text-xl md:my-1 my-7">
               <a
