@@ -5,7 +5,7 @@ const TextCardLeft = ({ title, text, Img }) => {
         <h3 className="text-4xl text-center bg-clip-text text-transparent bg-gradient-to-br from-sky-500 to-pink-500">
           {title}
         </h3>
-        <p className="text-lg text-center w-2/3 text-black dark:text-white">
+        <p className="text-lg text-center w-2/3 text-gray-900 dark:text-gray-50">
           {text}
         </p>
       </div>
@@ -26,7 +26,7 @@ const TextCardRight = ({ title, text, Img }) => {
         <h3 className="text-4xl text-center bg-clip-text text-transparent bg-gradient-to-br from-sky-500 to-pink-500">
           {title}
         </h3>
-        <p className="text-lg text-center w-2/3 text-black dark:text-white">
+        <p className="text-lg text-center w-2/3 text-gray-900 dark:text-gray-50">
           {text}
         </p>
       </div>
