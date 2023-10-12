@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import Homepage from "./homepage/Homepage";
 import Loginpage from "./loginpage/Loginpage";
+import Navbar from "./navbar/Navbar";
 import "./App.css";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
+        <Navbar />
         {/* navigation bar here */}
         {routes}
       </Router>
