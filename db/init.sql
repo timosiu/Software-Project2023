@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS `locations` (
   `country` varchar(50) NOT NULL,
   `title` varchar(50) NOT NULL,
   `description` varchar(255),
+  `comforts` varchar(255),
+  `price` FLOAT NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -32,21 +34,25 @@ VALUES (
     'matti@meikalainen.com',
     '$2a$12$stzoKdDeAhklwUiwIKyK7./Ijl3L03UxMyKg.ElzCrgQCW9wkA7Wi'
   );
-INSERT INTO `locations` (`id`, `provider_id`, `city`, `country`, `title`, `description`)
+INSERT INTO `locations` (`id`, `provider_id`, `city`, `country`, `title`, `description`, `comforts`, `price`)
 VALUES (
     1,
     1,
     'Kajaani',
     'Finland',
     'Farmhouse with asd',
-    'Description text asdasdasdasdasdasdasd'
+    'Description text asdasdasdasdasdasdasd',
+    '{"bathtub":true,"microwave":false,"refrigerator":true,"beach":true}',
+    80
   );
-INSERT INTO `locations` (`id`, `provider_id`, `city`, `country`, `title`, `description`)
+INSERT INTO `locations` (`id`, `provider_id`, `city`, `country`, `title`, `description`, `comforts`, `price`)
 VALUES (
     2,
     1,
     'Inari',
     'Finland',
     'Cabin by the lake',
-    'Description text asdasdasdasdasdasdasd'
+    'Description text asdasdasdasdasdasdasd',
+    '{"bathtub":false,"microwave":false,"refrigerator":false,"beach":true}',
+    75
   );
