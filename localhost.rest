@@ -1,6 +1,9 @@
 GET http://localhost:5000/api/locations
 
 ###
+GET http://localhost:5000/api/locations/1
+
+###
 POST http://localhost:5000/api/users/signup
 Content-Type: application/json
 

@@ -9,7 +9,7 @@ const getLocations = async (req, res) => {
       let obj = JSON.parse(test);
       console.log(obj.bathtub);
 
-      res.send(response);
+      res.status(200).send(response);
     }
   } catch (err) {
     console.log(err);
@@ -17,6 +17,19 @@ const getLocations = async (req, res) => {
   }
 };
 
+const getLocationById = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const response = await locations.findLocationById(id);
+    if (response.length === 1) {
+      res.status(200).send(response[0]);
+    }
+  } catch (err) {
+    res.status(500).send({ message: "Something went wrong" });
+  }
+};
+
 module.exports = {
   getLocations,
+  getLocationById,
 };
