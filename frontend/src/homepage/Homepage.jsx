@@ -10,7 +10,7 @@ import { TextCardLeft, TextCardRight } from "../components/TextCard";
 const Homepage = () => {
   return (
     <div className="flex flex-col place-items-center bg-gradient-to-br from-sky-500 to-pink-500 h-screen">
-      <div className="flex flex-col place-items-center h-1/2 mx-10">
+      <div className="flex flex-col place-items-center min-h-1/2 mx-10">
         <h1 className="text-8xl mt-32 text-gray-50 text-center">Hippy Hotel</h1>
         <h2 className="text-6xl mt-10 text-gray-50 text-center">
           Your Portal to Spontanious Travel
