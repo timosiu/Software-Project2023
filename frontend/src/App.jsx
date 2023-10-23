@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import Homepage from "./homepage/Homepage";
 import Loginpage from "./loginpage/Loginpage";
+import Contactpage from "./contactpage/Contactpage";
 import Navbar from "./navbar/Navbar";
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/loginpage" element={<Loginpage />} />
+      <Route path="/contactpage" element={<Contactpage />} />
       <Route path="*" element={<Navigate to="/" />} />
       {/* additional pages here */}
     </Routes>

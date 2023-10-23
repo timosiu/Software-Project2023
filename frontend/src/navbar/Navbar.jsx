@@ -5,7 +5,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const Links = [
-    { name: "Contact", link: "/" },
+    { name: "Contact", link: "/contactpage" },
     { name: "Login", link: "/loginpage" },
   ];
 
