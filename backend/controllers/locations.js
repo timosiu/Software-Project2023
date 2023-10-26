@@ -4,10 +4,11 @@ const getLocations = async (req, res) => {
   try {
     const response = await locations.findAll();
     if (response) {
-      // example how to access certain comforts value
-      let test = response[0].comforts;
-      let obj = JSON.parse(test);
+      // examples how to access certain comforts values and images
+      let obj = JSON.parse(response[0].comforts);
+      let array = JSON.parse(response[1].locationImages);
       console.log(obj.bathtub);
+      console.log(array[1]);
 
       res.status(200).send(response);
     }
