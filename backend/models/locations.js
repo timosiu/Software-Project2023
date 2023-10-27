@@ -8,7 +8,7 @@ const locations = {
           return reject(err);
         }
         connection.query(
-          "SELECT provider_id, city, country, title, description, comforts, price FROM locations",
+          "SELECT L.*,(SELECT CONCAT('[',GROUP_CONCAT(CONCAT('\"', `image`, '\"')),']') FROM location_images WHERE `location_id` = L.`id`) 'locationImages' FROM locations L;",
           (err, result) => {
             connection.release();
             if (err) {
@@ -26,7 +26,7 @@ const locations = {
           return reject(err);
         }
         connection.query(
-          "SELECT * FROM locations WHERE id=?;",
+          "SELECT L.*,(SELECT CONCAT('[',GROUP_CONCAT(CONCAT('\"', `image`, '\"')),']') FROM location_images WHERE location_id = L.id) 'locationImages' FROM locations L WHERE id=?;",
           id,
           (err, result) => {
             connection.release();
