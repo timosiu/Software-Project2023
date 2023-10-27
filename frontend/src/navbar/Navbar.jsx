@@ -17,13 +17,13 @@ const Navbar = () => {
       >
         <div
           className="text-2xl cursor-pointer flex items-center
-         text-white hover:text-slate-300 duration-500 "
+          text-gray-900 hover:text-gray-600 dark:text-gray-50 dark:hover:text-gray-300 duration-500 "
         >
           <a href={"/"}>Hippy Hotel</a>
         </div>
         <div
           onClick={() => setMenuOpen(!menuOpen)}
-          className="w-6 text-white hover:text-slate-300 duration-500 md:hidden cursor-pointer absolute right-8 top-5"
+          className="w-6 text-gray-900 hover:text-gray-600 dark:text-gray-50 dark:hover:text-gray-300 duration-500 md:hidden cursor-pointer absolute right-8 top-5"
         >
           {menuOpen ? <XMarkIcon /> : <Bars3Icon />}
         </div>
@@ -32,7 +32,7 @@ const Navbar = () => {
             <li key={link.name} className="md:ml-8 text-xl md:my-1 my-7">
               <a
                 href={link.link}
-                className="text-white hover:text-slate-300 duration-500"
+                className="text-gray-900 hover:text-gray-600 dark:text-gray-50 dark:hover:text-gray-300 duration-500"
               >
                 {link.name}
               </a>
