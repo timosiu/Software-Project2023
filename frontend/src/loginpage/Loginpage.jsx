@@ -1,15 +1,72 @@
-import { useState } from "react";
+import { useContext, useState, useRef } from "react";
+import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
+
+import { loginUser, signUpUser } from "./api/users";
+import { AuthContext } from "../context/auth-context";
 
 const Loginpage = () => {
   const [tab, setTab] = useState(true);
+
+  let navigate = useNavigate();
+  // Authentication
+  const auth = useContext(AuthContext);
+  const [authError, setAuthError] = useState(false);
+
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const signUpUserMutation = useMutation({
+    mutationFn: signUpUser,
+    onSuccess: (data) => {
+      auth.login(data.id, data.token);
+      navigate("/");
+    },
+    onError: (error) => {
+      console.log(error);
+      setAuthError("Failed to sign up, please try again");
+    },
+  });
+
+  const loginUserMutation = useMutation({
+    mutationFn: loginUser,
+    onSuccess: (data) => {
+      auth.login(data.id, data.token, data.email);
+      navigate("/");
+    },
+    onError: (error) => {
+      console.log(error);
+      setAuthError("failed to log in, please check your credentials");
+    },
+  });
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    setAuthError(false);
+
+    if (tab) {
+      loginUserMutation.mutate({
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      });
+    } else {
+      signUpUserMutation.mutate({
+        name: nameRef.current.value,
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      });
+    }
+  };
 
   let content;
 
   if (tab == true) {
     content = (
       <form
-        action="/login"
-        method="POST"
+        onSubmit={onSubmitHandler}
+        //action="/login"
+        //method="POST"
         class=" space-y-8 md:space-y-10 px-8 pt-6 pb-8 mb-4"
       >
         <div class=" mt-10">
@@ -23,6 +80,7 @@ const Loginpage = () => {
             type="email"
             name="email"
             id="email"
+            ref={emailRef}
             class="bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
             placeholder="you@example.com"
             required=""
@@ -39,6 +97,7 @@ const Loginpage = () => {
             type="password"
             name="password"
             id="password"
+            ref={passwordRef}
             class="bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
             placeholder="*******"
             required=""
@@ -57,8 +116,9 @@ const Loginpage = () => {
   } else {
     content = (
       <form
-        action="/signup"
-        method="POST"
+        onSubmit={onSubmitHandler}
+        //action="/signup"
+        //method="POST"
         class=" space-y-8 md:space-y-10 px-8 pt-6 pb-8 mb-4"
       >
         <div class=" mt-10">
@@ -72,6 +132,7 @@ const Loginpage = () => {
             type="text"
             name="name"
             id="name"
+            ref={nameRef}
             class="bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
             placeholder="Your Name"
             required=""
@@ -88,6 +149,7 @@ const Loginpage = () => {
             type="email"
             name="email"
             id="email"
+            ref={emailRef}
             class="bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
             placeholder="you@example.com"
             required=""
@@ -104,6 +166,7 @@ const Loginpage = () => {
             type="password"
             name="password"
             id="password"
+            ref={passwordRef}
             class="bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
             placeholder="*******"
             required=""
