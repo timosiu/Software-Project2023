@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
+import { AuthContext } from "../context/auth-context";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const auth = useContext(AuthContext);
 
   const Links = [
     { name: "Contact", link: "/contactpage" },
-    { name: "Login", link: "/loginpage" },
+    //{ name: "Login", link: "/loginpage" },
   ];
 
   return (
@@ -38,6 +41,23 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li>
+            {auth.isLoggedIn ? (
+              <a
+                className="text-white hover:text-slate-300 duration-500 md:ml-8 text-xl md:my-1 my-7 cursor-pointer"
+                onClick={auth.logout}
+              >
+                logout
+              </a>
+            ) : (
+              <a
+                className="text-white hover:text-slate-300 duration-500 md:ml-8 text-xl md:my-1 my-7"
+                href="/loginpage"
+              >
+                Login
+              </a>
+            )}
+          </li>
         </ul>
       </div>
     </div>
