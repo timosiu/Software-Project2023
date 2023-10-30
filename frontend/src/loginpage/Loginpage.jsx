@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { loginUser, signUpUser } from "./api/users";
 import { AuthContext } from "../context/auth-context";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 const Loginpage = () => {
   const [tab, setTab] = useState(true);
@@ -12,6 +13,7 @@ const Loginpage = () => {
   // Authentication
   const auth = useContext(AuthContext);
   const [authError, setAuthError] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -26,6 +28,7 @@ const Loginpage = () => {
     onError: (error) => {
       console.log(error);
       setAuthError("Failed to sign up, please try again");
+      setisLoading(false);
     },
   });
 
@@ -38,12 +41,14 @@ const Loginpage = () => {
     onError: (error) => {
       console.log(error);
       setAuthError("failed to log in, please check your credentials");
+      setisLoading(false);
     },
   });
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     setAuthError(false);
+    setisLoading(true);
 
     if (tab) {
       loginUserMutation.mutate({
@@ -206,6 +211,7 @@ const Loginpage = () => {
       </div>
       <div class="max-w-md px-10 bg-gray-50 dark:bg-neutral-800 rounded-lg ">
         {content}
+        {isLoading && <LoadingSpinner />}
       </div>
     </div>
   );
