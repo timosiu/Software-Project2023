@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { loginUser, signUpUser } from "./api/users";
 import { AuthContext } from "../context/auth-context";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 const Loginpage = () => {
   const [tab, setTab] = useState(true);
@@ -62,19 +63,6 @@ const Loginpage = () => {
       });
     }
   };
-
-  const loadingSpinner = (
-    <div className="absolute inset-0 flex items-center justify-center backdrop-blur">
-      <div
-        className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-        role="status"
-      >
-        <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-          Loading ...
-        </span>
-      </div>
-    </div>
-  );
 
   let content;
 
@@ -223,7 +211,7 @@ const Loginpage = () => {
       </div>
       <div class="max-w-md px-10 bg-gray-50 dark:bg-neutral-800 rounded-lg ">
         {content}
-        {isLoading && loadingSpinner}
+        {isLoading && <LoadingSpinner />}
       </div>
     </div>
   );
