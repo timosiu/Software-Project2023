@@ -1,4 +1,4 @@
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,14 @@ import { LoadingSpinner } from "../components/LoadingSpinner";
 
 const Loginpage = () => {
   const [tab, setTab] = useState(true);
+
+  useEffect(() => {
+    emailRef.current.value = "";
+    passwordRef.current.value = "";
+    if (!tab) {
+      nameRef.current.value = "";
+    }
+  }, [tab]);
 
   let navigate = useNavigate();
   // Authentication
