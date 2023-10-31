@@ -1,10 +1,9 @@
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 
 import { loginUser, signUpUser } from "./api/users";
 import { AuthContext } from "../context/auth-context";
-import { useEffect } from "react";
 
 const Loginpage = () => {
   const [tab, setTab] = useState(true);
