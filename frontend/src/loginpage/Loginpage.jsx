@@ -11,6 +11,9 @@ const Loginpage = () => {
   useEffect(() => {
     emailRef.current.value = "";
     passwordRef.current.value = "";
+    if (!tab) {
+      nameRef.current.value = "";
+    }
   }, [tab]);
 
   let navigate = useNavigate();
