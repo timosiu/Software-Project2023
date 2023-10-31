@@ -4,9 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 import { loginUser, signUpUser } from "./api/users";
 import { AuthContext } from "../context/auth-context";
+import { useEffect } from "react";
 
 const Loginpage = () => {
   const [tab, setTab] = useState(true);
+
+  useEffect(() => {
+    emailRef.current.value = "";
+    passwordRef.current.value = "";
+  }, [tab]);
 
   let navigate = useNavigate();
   // Authentication
