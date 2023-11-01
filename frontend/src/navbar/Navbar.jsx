@@ -9,6 +9,7 @@ const Navbar = () => {
 
   const Links = [
     { name: "Contact", link: "/contactpage" },
+    { name: "Locations", link: "/locationpage" },
     //{ name: "Login", link: "/loginpage" },
   ];
 
