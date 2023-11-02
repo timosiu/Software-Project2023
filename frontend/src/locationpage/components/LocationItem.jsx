@@ -1,10 +1,17 @@
 const LocationItem = ({ location }) => {
   const locationImages = JSON.parse(location.locationImages);
-  console.log(locationImages);
+  const comforts = JSON.parse(location.comforts);
+  const emojiMap = {
+    bathtub: "🛁Bathtub",
+    microvawe: "🍿Microvawe",
+    refrigerator: "🧊Refrigerator",
+    beach: "🏖️Beach",
+  };
+
   return (
     <div className="flex flex-col md:flex-row col-span-3 max-w-full mb-10">
       <img
-        src={JSON.parse(location.locationImages)[0]}
+        src={locationImages[0]}
         className="aspect-video w-full max-h-96 object-cover rounded-lg mt-10"
       />
       <div className="flex flex-col w-full mt-6 md:mt-10 ml-0 md:ml-6">
@@ -15,15 +22,13 @@ const LocationItem = ({ location }) => {
           {location.description}
         </p>
         <p className="text-lg w-2/3 text-gray-900 dark:text-gray-50 truncate">
-          {location.comforts
-            .replace(/[{}"]/g, "")
-            .replace(/:/g, ": ")
-            .replace(/true/g, "🗹")
-            .replace(/false/g, "🗷")
-            .split(",")
-            .map((item, index) => (
-              <span key={index}>
-                {item}
+          Comforts:
+          <br />
+          {Object.keys(comforts)
+            .filter((item) => comforts[item])
+            .map((item) => (
+              <span key={item}>
+                {emojiMap[item]}
                 <br />
               </span>
             ))}
