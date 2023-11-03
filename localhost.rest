@@ -4,6 +4,32 @@ GET http://localhost:5000/api/locations
 GET http://localhost:5000/api/locations/2
 
 ###
+GET http://localhost:5000/api/forum
+
+###
+GET http://localhost:5000/api/forum/1
+
+###
+POST http://localhost:5000/api/forum
+Content-Type: application/json
+Authorization: BEARER {{authToken}}
+
+{
+  "title": "Test Title",
+  "message": "Test Message",
+  "category": "Traveling"
+}
+
+###
+POST http://localhost:5000/api/forum/1
+Content-Type: application/json
+Authorization: BEARER {{authToken}}
+
+{
+  "message": "Test Message Inside A Thread"
+}
+
+###
 POST http://localhost:5000/api/users/signup
 Content-Type: application/json
 
