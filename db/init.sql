@@ -67,21 +67,65 @@ VALUES (
     1,
     'Kajaani',
     'Finland',
-    'Farmhouse with asd',
-    'Description text asdasdasdasdasdasdasd',
-    '{"bathtub":true,"microwave":false,"refrigerator":true,"beach":true}',
+    'Cozy Farmhouse',
+    'Comfortable two-storey holiday home with accommodation for 10 people.',
+    '{"bathtub":false,"microwave":true,"refrigerator":true,"beach":false}',
     80
   );
 INSERT INTO `locations` (`id`, `provider_id`, `city`, `country`, `title`, `description`, `comforts`, `price`)
 VALUES (
     2,
-    1,
+    2,
     'Inari',
     'Finland',
-    'Cabin by the lake',
-    'Description text asdasdasdasdasdasdasd',
-    '{"bathtub":false,"microwave":false,"refrigerator":false,"beach":true}',
+    'Chalet of Auroras',
+    'Cottage by the lake. Great Northern Light views from your own lake shore!',
+    '{"bathtub":false,"microwave":true,"refrigerator":true,"beach":true}',
     75
+  );
+INSERT INTO `locations` (`id`, `provider_id`, `city`, `country`, `title`, `description`, `comforts`, `price`)
+VALUES (
+    3,
+    1,
+    'Pohjankuru',
+    'Finland',
+    'Broback cosy cottage',
+    'Welcome to stay in our lively and lovely little farm! Our cottage is a haven for Raasepori area visitors who appreciate nature and wish to make day trips to beautiful places nearby.',
+    '{"bathtub":false,"microwave":false,"refrigerator":true,"beach":false}',
+    85
+  );
+INSERT INTO `locations` (`id`, `provider_id`, `city`, `country`, `title`, `description`, `comforts`, `price`)
+VALUES (
+    4,
+    2,
+    'Tornio',
+    'Finland',
+    'Villa Saagala',
+    'Amazing river view. Big windows to the river: you can admire the midnight sun & Northern Lights.',
+    '{"bathtub":false,"microwave":true,"refrigerator":true,"beach":true}',
+    66
+  );
+INSERT INTO `locations` (`id`, `provider_id`, `city`, `country`, `title`, `description`, `comforts`, `price`)
+VALUES (
+    5,
+    1,
+    'Suomussalmi',
+    'Finland',
+    'Luxury Cabin of Hossa',
+    'Quiet location with outdoor electricity for car, big windows with view towards Northern Lights, outdoor bathtub and sauna.',
+    '{"bathtub":true,"microwave":false,"refrigerator":true,"beach":false}',
+    73
+  );
+INSERT INTO `locations` (`id`, `provider_id`, `city`, `country`, `title`, `description`, `comforts`, `price`)
+VALUES (
+    6,
+    2,
+    'La Hague',
+    'France',
+    'La petite maison de Vauville',
+    'Typical La Hague house located by the sea a few meters from the Vauville pond, the Chemins des Douaniers and the beach.',
+    '{"bathtub":true,"microwave":true,"refrigerator":true,"beach":true}',
+    95
   );
 INSERT INTO `location_images` (`id`, `location_id`, `image`)
 VALUES (
@@ -100,6 +144,36 @@ VALUES (
     3,
     2,
     'https://a0.muscache.com/im/pictures/ef0c8000-c12e-43db-9d09-1bb6a9f34c87.jpg?im_w=1440'
+  );
+INSERT INTO `location_images` (`id`, `location_id`, `image`)
+VALUES (
+    4,
+    3,
+    'https://a0.muscache.com/im/pictures/85c23a0b-2ca8-421b-be36-9e2cfca35762.jpg?im_w=960'
+  );
+INSERT INTO `location_images` (`id`, `location_id`, `image`)
+VALUES (
+    5,
+    4,
+    'https://a0.muscache.com/im/pictures/e6c51e95-ceb4-457c-93b8-f549b448ebdb.jpg?im_w=960'
+  );
+INSERT INTO `location_images` (`id`, `location_id`, `image`)
+VALUES (
+    6,
+    4,
+    'https://a0.muscache.com/im/pictures/e4bf545b-c584-43aa-b49e-48189368b2b8.jpg?im_w=720'
+  );
+INSERT INTO `location_images` (`id`, `location_id`, `image`)
+VALUES (
+    7,
+    5,
+    'https://a0.muscache.com/im/pictures/86d8dc75-e83a-4a75-a96d-6a1b0a50d4d3.jpg?im_w=960'
+  );
+INSERT INTO `location_images` (`id`, `location_id`, `image`)
+VALUES (
+    8,
+    6,
+    'https://a0.muscache.com/im/pictures/miso/Hosting-48845539/original/6a333252-e559-4bb8-84df-979e037cf6f1.jpeg?im_w=960'
   );
 INSERT INTO `forum_threads` (`id`, `user_id`, `title`, `message`, `category`)
 VALUES (
