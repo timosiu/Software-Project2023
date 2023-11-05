@@ -24,7 +24,7 @@ const LocationListpage = () => {
   return (
     <div className="flex flex-col place-items-center bg-gradient-to-br from-sky-500 to-pink-500 min-h-screen">
       <div className="flex flex-col place-items-center min-h-1/4 mx-10">
-        <h1 className="text-5xl sm:text-7xl min-text-5xl mt-32 text-gray-50 text-center">
+        <h1 className="text-4xl sm:text-7xl min-text-5xl mt-32 text-gray-50 text-center">
           Available Accommodations
         </h1>
         <h2 className="text-3xl mt-10 text-gray-50 text-center">

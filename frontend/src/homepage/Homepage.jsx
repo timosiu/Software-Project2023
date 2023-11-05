@@ -12,7 +12,7 @@ const Homepage = () => {
     <div className="flex flex-col place-items-center bg-gradient-to-br from-sky-500 to-pink-500 min-h-screen">
       <div className="flex flex-col place-items-center min-h-1/2 mx-10">
         <h1 className="text-8xl mt-32 text-gray-50 text-center">Hippy Hotel</h1>
-        <h2 className="text-6xl mt-10 text-gray-50 text-center">
+        <h2 className="text-5xl sm:text-6xl mt-10 text-gray-50 text-center">
           Your Portal to Spontanious Travel
         </h2>
       </div>
