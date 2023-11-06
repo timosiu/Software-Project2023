@@ -120,7 +120,36 @@ const loginUser = async (req, res) => {
   }
 };
 
+const editImage = async (req, res) => {
+  try {
+    const user_id = req.userData.userId;
+    const image = req.body.image;
+
+    const response = await users.edit(user_id, image);
+    if (response) {
+      res.status(200).send({ message: "Image updated successfully" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ message: "Something went wrong" });
+  }
+};
+
+const getProfile = async (req, res) => {
+  try {
+    const user_id = req.userData.userId;
+    const response = await users.findProfileById(user_id);
+    if (response.length === 1) {
+      res.status(200).send(response[0]);
+    }
+  } catch (err) {
+    res.status(500).send({ message: "Something went wrong" });
+  }
+};
+
 module.exports = {
   loginUser,
   signUpUser,
+  editImage,
+  getProfile,
 };
