@@ -50,4 +50,17 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:5000/api/users
+Authorization: BEARER {{authToken}}
+
+###
+PUT http://localhost:5000/api/users/edit-image
+Content-Type: application/json
+Authorization: BEARER {{authToken}}
+
+{
+  "image": "Test Image URL"
+}
+
+###
 @authToken = {{login.response.body.token}}
