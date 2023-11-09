@@ -10,4 +10,3 @@ const ErrorBox = (props) => {
 };
 
 export { ErrorBox };
-//<span className="font-bold block ">{errorText}</span>

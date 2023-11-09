@@ -83,8 +83,6 @@ const Loginpage = () => {
     content = (
       <form
         onSubmit={onSubmitHandler}
-        //action="/login"
-        //method="POST"
         className=" space-y-8 md:space-y-10 px-8 pt-6 pb-8 mb-4"
       >
         <div className={`mt-${authError ? "1" : "10"}`}>
@@ -135,8 +133,6 @@ const Loginpage = () => {
     content = (
       <form
         onSubmit={onSubmitHandler}
-        //action="/signup"
-        //method="POST"
         className=" space-y-8 md:space-y-10 px-8 pt-6 pb-8 mb-4"
       >
         <div className={`mt-${authError ? "1" : "10"}`}>
