@@ -41,8 +41,6 @@ const Loginpage = () => {
       navigate("/");
     },
     onError: (error) => {
-      console.log("onerrror");
-      console.log(error);
       setAuthError(error.message);
       setisLoading(false);
     },
@@ -51,13 +49,10 @@ const Loginpage = () => {
   const loginUserMutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
-      console.log("mutationfnlogin success");
-      console.log(data);
       auth.login(data.id, data.token, data.email);
       navigate("/");
     },
     onError: (error) => {
-      console.log("onERROR loginusermutationlol");
       setAuthError(error.message);
       setisLoading(false);
     },
