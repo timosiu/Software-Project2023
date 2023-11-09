@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser, signUpUser } from "./api/users";
 import { AuthContext } from "../context/auth-context";
 import { LoadingSpinner } from "../components/LoadingSpinner";
+import { ErrorBox } from "../components/ErrorBox";
 
 const Loginpage = () => {
   const [tab, setTab] = useState(true);
@@ -16,6 +17,12 @@ const Loginpage = () => {
       nameRef.current.value = "";
     }
   }, [tab]);
+
+  // Tab change
+  const loginMode = () => {
+    setTab(!tab);
+    setAuthError(false);
+  };
 
   let navigate = useNavigate();
   // Authentication
@@ -34,8 +41,9 @@ const Loginpage = () => {
       navigate("/");
     },
     onError: (error) => {
+      console.log("onerrror");
       console.log(error);
-      setAuthError("Failed to sign up, please try again");
+      setAuthError(error.message);
       setisLoading(false);
     },
   });
@@ -43,12 +51,14 @@ const Loginpage = () => {
   const loginUserMutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
+      console.log("mutationfnlogin success");
+      console.log(data);
       auth.login(data.id, data.token, data.email);
       navigate("/");
     },
     onError: (error) => {
-      console.log(error);
-      setAuthError("failed to log in, please check your credentials");
+      console.log("onERROR loginusermutationlol");
+      setAuthError(error.message);
       setisLoading(false);
     },
   });
@@ -80,12 +90,12 @@ const Loginpage = () => {
         onSubmit={onSubmitHandler}
         //action="/login"
         //method="POST"
-        class=" space-y-8 md:space-y-10 px-8 pt-6 pb-8 mb-4"
+        className=" space-y-8 md:space-y-10 px-8 pt-6 pb-8 mb-4"
       >
-        <div class=" mt-10">
+        <div className={`mt-${authError ? "1" : "10"}`}>
           <label
-            for="email"
-            class="block text-sm font-medium text-gray-900 dark:text-gray-50"
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-900 dark:text-gray-50"
           >
             Email
           </label>
@@ -94,15 +104,15 @@ const Loginpage = () => {
             name="email"
             id="email"
             ref={emailRef}
-            class="bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
+            className=" w-full bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
             placeholder="you@example.com"
             required=""
           ></input>
         </div>
-        <div class="">
+        <div className="">
           <label
-            for="password"
-            class="block text-sm font-medium text-gray-900 dark:text-gray-50"
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-900 dark:text-gray-50"
           >
             Password
           </label>
@@ -111,15 +121,15 @@ const Loginpage = () => {
             name="password"
             id="password"
             ref={passwordRef}
-            class="bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
+            className=" w-full bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
             placeholder="*******"
             required=""
           ></input>
         </div>
-        <div class="flex justify-center">
+        <div className="flex justify-center">
           <button
             type="submit"
-            class=" bg-sky-500 hover:bg-sky-700 text-gray-50 font-bold py-2 px-4 rounded-lg"
+            className=" bg-sky-500 hover:bg-sky-700 text-gray-50 font-bold py-2 px-4 rounded-lg"
           >
             Sign in
           </button>
@@ -132,12 +142,12 @@ const Loginpage = () => {
         onSubmit={onSubmitHandler}
         //action="/signup"
         //method="POST"
-        class=" space-y-8 md:space-y-10 px-8 pt-6 pb-8 mb-4"
+        className=" space-y-8 md:space-y-10 px-8 pt-6 pb-8 mb-4"
       >
-        <div class=" mt-10">
+        <div className={`mt-${authError ? "1" : "10"}`}>
           <label
-            for="name"
-            class="block text-sm font-medium text-gray-900 dark:text-gray-50"
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-900 dark:text-gray-50"
           >
             Name
           </label>
@@ -146,15 +156,15 @@ const Loginpage = () => {
             name="name"
             id="name"
             ref={nameRef}
-            class="bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
+            className="w-full bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
             placeholder="Your Name"
             required=""
           ></input>
         </div>
-        <div class=" mt-10">
+        <div className=" mt-10">
           <label
-            for="email"
-            class="block text-sm font-medium text-gray-900 dark:text-gray-50"
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-900 dark:text-gray-50"
           >
             Email
           </label>
@@ -163,15 +173,15 @@ const Loginpage = () => {
             name="email"
             id="email"
             ref={emailRef}
-            class="bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
+            className=" w-full bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
             placeholder="you@example.com"
             required=""
           ></input>
         </div>
-        <div class="">
+        <div className="">
           <label
-            for="password"
-            class="block text-sm font-medium text-gray-900 dark:text-gray-50"
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-900 dark:text-gray-50"
           >
             Password
           </label>
@@ -180,15 +190,15 @@ const Loginpage = () => {
             name="password"
             id="password"
             ref={passwordRef}
-            class="bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
+            className=" w-full bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
             placeholder="*******"
             required=""
           ></input>
         </div>
-        <div class="flex justify-center">
+        <div className="flex justify-center">
           <button
             type="submit"
-            class=" bg-sky-500 hover:bg-sky-700 text-gray-50 font-bold py-2 px-4 rounded-lg"
+            className=" bg-sky-500 hover:bg-sky-700 text-gray-50 font-bold py-2 px-4 rounded-lg"
           >
             Register
           </button>
@@ -198,26 +208,27 @@ const Loginpage = () => {
   }
 
   return (
-    <div class="flex flex-col items-center justify-center bg-gradient-to-br from-sky-500 to-pink-500 h-screen">
-      <div class="inline-flex ">
+    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-sky-500 to-pink-500 h-screen">
+      <div className="inline-flex ">
         <button
-          onClick={() => setTab(true)}
-          class="max-w-md px-10 
+          onClick={loginMode}
+          className="max-w-md px-10 
           bg-gray-50 text-black font-bold hover:bg-gray-500 
           dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-600 rounded-t-lg"
         >
           Sign in
         </button>
         <button
-          onClick={() => setTab(false)}
-          class="max-w-md px-10 
+          onClick={loginMode}
+          className="max-w-md px-10 
           bg-gray-50 text-black font-bold hover:bg-gray-500 
           dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-600 rounded-t-lg"
         >
           Register
         </button>
       </div>
-      <div class="max-w-md px-10 bg-gray-50 dark:bg-neutral-800 rounded-lg ">
+      <div className="max-w-sm  px-10 bg-gray-50 dark:bg-neutral-800 rounded-lg ">
+        {authError && <ErrorBox errorText={authError} />}
         {content}
         {isLoading && <LoadingSpinner />}
       </div>

@@ -23,12 +23,12 @@ let logoutTimer;
 // VITE_API_URL
 function App() {
   const [token, setToken] = useState(false);
-  const [userId, setuser] = useState(false);
+  const [userId, setUser] = useState(false);
   const [tokenExpirationDate, setTokenExpirationDate] = useState(false);
 
   const login = useCallback((uid, token, email, expirationDate) => {
     setToken(token);
-    setuser(uid);
+    setUser(uid);
 
     const tokenExpirationDate =
       expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
@@ -45,7 +45,7 @@ function App() {
 
   const logout = useCallback(() => {
     setToken(null);
-    setuser(null);
+    setUser(null);
     setTokenExpirationDate(null);
     localStorage.removeItem("userData");
   }, []);
