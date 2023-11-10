@@ -1,6 +1,6 @@
 const express = require("express");
 const users = require("./routes/users");
-const locations = require("./routes/locations");
+const services = require("./routes/services");
 const forum = require("./routes/forum");
 const cors = require("cors");
 
@@ -17,7 +17,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api/users", users);
-app.use("/api/locations", locations);
+app.use("/api/services", services);
 app.use("/api/forum", forum);
 
 app.get("/health", (req, res) => {
