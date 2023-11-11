@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const Links = [
     { name: "Contact", link: "/contactpage" },
-    { name: "Locations", link: "/locationpage" },
+    { name: "Services", link: "/servicepage" },
     //{ name: "Login", link: "/loginpage" },
   ];
 
@@ -45,14 +45,14 @@ const Navbar = () => {
           <li>
             {auth.isLoggedIn ? (
               <a
-                className="text-white hover:text-slate-300 duration-500 md:ml-8 text-xl md:my-1 my-7 cursor-pointer"
+                className="text-gray-900 hover:text-gray-600 dark:text-gray-50 dark:hover:text-gray-300 duration-500 md:ml-8 text-xl md:my-1 my-7 cursor-pointer"
                 onClick={auth.logout}
               >
                 logout
               </a>
             ) : (
               <a
-                className="text-white hover:text-slate-300 duration-500 md:ml-8 text-xl md:my-1 my-7"
+                className="text-gray-900 hover:text-gray-600 dark:text-gray-50 dark:hover:text-gray-300 duration-500 md:ml-8 text-xl md:my-1 my-7"
                 href="/loginpage"
               >
                 Login

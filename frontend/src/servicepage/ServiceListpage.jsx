@@ -1,11 +1,11 @@
 import { useQuery } from "react-query";
 
-import { getLocations } from "./api/locations";
-import LocationList from "./components/LocationList";
+import { getServices } from "./api/services";
+import ServiceList from "./components/ServiceList";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
-const LocationListpage = () => {
-  const { isLoading, error, data } = useQuery("locations", getLocations);
+const ServiceListpage = () => {
+  const { isLoading, error, data } = useQuery("services", getServices);
   // testing data duplication
   // const duplicatedData = [...data, ...data, ...data, ...data, ...data];
 
@@ -16,19 +16,19 @@ const LocationListpage = () => {
   } else if (error) {
     content = <p>Sorry, something went wrong.</p>;
   } else {
-    content = <LocationList locations={data} />;
+    content = <ServiceList services={data} />;
     // testing data using duplicated data
-    // content = <LocationList locations={duplicatedData} />;
+    // content = <ServiceList servies={duplicatedData} />;
   }
 
   return (
     <div className="flex flex-col place-items-center bg-gradient-to-br from-sky-500 to-pink-500 min-h-screen">
       <div className="flex flex-col place-items-center min-h-1/4 mx-10">
-        <h1 className="text-4xl sm:text-7xl min-text-5xl mt-32 text-gray-50 text-center">
-          Available Accommodations
+        <h1 className="text-6xl sm:text-7xl min-text-5xl mt-32 text-gray-50 text-center">
+          Available Services
         </h1>
         <h2 className="text-3xl mt-10 text-gray-50 text-center">
-          Find your perfect getaway!
+          Find the service that best fits your needs!
         </h2>
       </div>
       {content}
@@ -36,4 +36,4 @@ const LocationListpage = () => {
   );
 };
 
-export default LocationListpage;
+export default ServiceListpage;

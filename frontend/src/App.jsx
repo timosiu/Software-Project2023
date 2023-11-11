@@ -12,7 +12,7 @@ import { AuthContext } from "./context/auth-context";
 import Homepage from "./homepage/Homepage";
 import Loginpage from "./loginpage/Loginpage";
 import Contactpage from "./contactpage/Contactpage";
-import LocationListpage from "./locationpage/LocationListpage";
+import ServiceListpage from "./servicepage/ServiceListpage";
 import Navbar from "./navbar/Navbar";
 import "./App.css";
 
@@ -80,9 +80,8 @@ function App() {
       <Route path="/" element={<Homepage />} />
       <Route path="/loginpage" element={<Loginpage />} />
       <Route path="/contactpage" element={<Contactpage />} />
-      <Route path="/locationpage" element={<LocationListpage />} />
+      <Route path="/servicepage" element={<ServiceListpage />} />
       <Route path="*" element={<Navigate to="/" />} />
-      {/* additional pages here */}
     </Routes>
   );
 
@@ -99,7 +98,6 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <Router>
           <Navbar />
-          {/* navigation bar here */}
           {routes}
         </Router>
       </QueryClientProvider>
