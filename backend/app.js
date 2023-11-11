@@ -1,7 +1,7 @@
 const express = require("express");
 const users = require("./routes/users");
 const services = require("./routes/services");
-const forum = require("./routes/forum");
+const reviews = require("./routes/reviews");
 const cors = require("cors");
 
 require("dotenv").config();
@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use("/api/users", users);
 app.use("/api/services", services);
-app.use("/api/forum", forum);
+app.use("/api/reviews", reviews);
 
 app.get("/health", (req, res) => {
   res.send("OK");

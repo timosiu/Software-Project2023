@@ -24,20 +24,9 @@ CREATE TABLE IF NOT EXISTS `service_images` (
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
-CREATE TABLE IF NOT EXISTS `forum_threads` (
+CREATE TABLE IF NOT EXISTS `reviews` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(100) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `message` varchar(255) NOT NULL,
-  `category` varchar(50) NOT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = latin1;
-CREATE TABLE IF NOT EXISTS `forum_posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(36) NOT NULL,
-  `thread_id` varchar(36) NOT NULL,
   `message` varchar(255) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -117,40 +106,15 @@ VALUES (
     4,
     'https://s3.amazonaws.com/virginhotelslv.com/content/uploads/2022/07/The-Gym-2022-2540x1040-1.jpg'
   );
-INSERT INTO `forum_threads` (`id`, `user_id`, `title`, `message`, `category`)
+INSERT INTO `reviews` (`id`, `user_id`, `message`)
 VALUES (
     1,
     2,
-    'Title about something',
-    'Message about something',
-    'Traveling'
+    'Review message'
   );
-INSERT INTO `forum_threads` (`id`, `user_id`, `title`, `message`, `category`)
+INSERT INTO `reviews` (`id`, `user_id`, `message`)
 VALUES (
     2,
     2,
-    'Title about something else',
-    'Message about something else',
-    'Traveling'
-  );
-INSERT INTO `forum_posts` (`id`, `user_id`, `thread_id`, `message`)
-VALUES (
-    1,
-    2,
-    1,
-    'Some post on a thread'
-  );
-INSERT INTO `forum_posts` (`id`, `user_id`, `thread_id`, `message`)
-VALUES (
-    2,
-    1,
-    1,
-    'Some other post on a thread'
-  );
-INSERT INTO `forum_posts` (`id`, `user_id`, `thread_id`, `message`)
-VALUES (
-    3,
-    1,
-    2,
-    'Random post'
+    'Review message 2'
   );
