@@ -6,6 +6,9 @@ export default {
       colors: {
         "haven-red": "#d7573b",
       },
+      fontFamily: {
+        ephesis: ["Ephesis", "cursive"],
+      },
     },
   },
   plugins: [],
