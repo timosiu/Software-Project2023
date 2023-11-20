@@ -14,6 +14,7 @@ import Loginpage from "./loginpage/Loginpage";
 import Contactpage from "./contactpage/Contactpage";
 import ServiceListpage from "./servicepage/ServiceListpage";
 import Navbar from "./navbar/Navbar";
+import Footer from "./footer/Footer";
 import "./App.css";
 
 const queryClient = new QueryClient();
@@ -99,6 +100,7 @@ function App() {
         <Router>
           <Navbar />
           {routes}
+          <Footer />
         </Router>
       </QueryClientProvider>
     </AuthContext.Provider>
