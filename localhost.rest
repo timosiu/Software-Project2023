@@ -1,6 +1,9 @@
 GET http://localhost:5000/api/services
 
 ###
+GET http://localhost:5000/api/activities
+
+###
 GET http://localhost:5000/api/reviews
 
 ###
