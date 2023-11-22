@@ -1,23 +1,18 @@
-GET http://localhost:5000/api/locations
+GET http://localhost:5000/api/services
 
 ###
-GET http://localhost:5000/api/locations/2
+GET http://localhost:5000/api/activities
 
 ###
-GET http://localhost:5000/api/forum
+GET http://localhost:5000/api/reviews
 
 ###
-GET http://localhost:5000/api/forum/1
-
-###
-POST http://localhost:5000/api/forum
+POST http://localhost:5000/api/reviews
 Content-Type: application/json
 Authorization: BEARER {{authToken}}
 
 {
-  "title": "Test Title",
-  "message": "Test Message",
-  "category": "Traveling"
+  "message": "Test Review Message"
 }
 
 ###

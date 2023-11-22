@@ -1,14 +1,14 @@
 const pool = require("../db/pool");
 
-const locations = {
-  findAll: () =>
+const reviews = {
+  findAllReviews: () =>
     new Promise((resolve, reject) => {
       pool.getConnection((err, connection) => {
         if (err) {
           return reject(err);
         }
         connection.query(
-          "SELECT L.*,(SELECT CONCAT('[',GROUP_CONCAT(CONCAT('\"', `image`, '\"')),']') FROM location_images WHERE `location_id` = L.`id`) 'locationImages' FROM locations L;",
+          "SELECT reviews.*, users.name AS user_name, users.image AS user_image FROM reviews LEFT JOIN users on reviews.user_id=users.id;",
           (err, result) => {
             connection.release();
             if (err) {
@@ -19,25 +19,26 @@ const locations = {
         );
       });
     }),
-  findLocationById: (id) =>
+  addReview: (review) =>
     new Promise((resolve, reject) => {
       pool.getConnection((err, connection) => {
         if (err) {
           return reject(err);
         }
         connection.query(
-          "SELECT L.*,(SELECT CONCAT('[',GROUP_CONCAT(CONCAT('\"', `image`, '\"')),']') FROM location_images WHERE location_id = L.id) 'locationImages' FROM locations L WHERE id=?;",
-          id,
+          "INSERT INTO reviews SET ?;",
+          review,
           (err, result) => {
             connection.release();
             if (err) {
-              return reject(err);
+              reject(err);
+            } else {
+              resolve(result);
             }
-            resolve(result);
           }
         );
       });
     }),
 };
 
-module.exports = locations;
+module.exports = reviews;

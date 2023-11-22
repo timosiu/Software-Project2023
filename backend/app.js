@@ -1,7 +1,8 @@
 const express = require("express");
 const users = require("./routes/users");
-const locations = require("./routes/locations");
-const forum = require("./routes/forum");
+const services = require("./routes/services");
+const activities = require("./routes/activities");
+const reviews = require("./routes/reviews");
 const cors = require("cors");
 
 require("dotenv").config();
@@ -17,8 +18,9 @@ app.use(
 app.use(express.json());
 
 app.use("/api/users", users);
-app.use("/api/locations", locations);
-app.use("/api/forum", forum);
+app.use("/api/services", services);
+app.use("/api/activities", activities);
+app.use("/api/reviews", reviews);
 
 app.get("/health", (req, res) => {
   res.send("OK");

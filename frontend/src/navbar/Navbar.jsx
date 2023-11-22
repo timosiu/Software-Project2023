@@ -8,22 +8,16 @@ const Navbar = () => {
   const auth = useContext(AuthContext);
 
   const Links = [
+    { name: "Services", link: "/servicepage" },
     { name: "Contact", link: "/contactpage" },
-    { name: "Locations", link: "/locationpage" },
     //{ name: "Login", link: "/loginpage" },
   ];
 
   return (
-    <div className="shadow-md w-full fixed top-0 left-0">
-      <div
-        className="md:flex items-center justify-between backdrop-blur  py-4
-      md:px-4 px-3"
-      >
-        <div
-          className="text-2xl cursor-pointer flex items-center
-          text-gray-900 hover:text-gray-600 dark:text-gray-50 dark:hover:text-gray-300 duration-500 "
-        >
-          <a href={"/"}>Hippy Hotel</a>
+    <div className="shadow-xl w-full fixed top-0 left-0 bg-white">
+      <div className="md:flex items-center justify-between py-4 md:pr-20 lg:pr-40 px-10">
+        <div className="font-ephesis text-4xl cursor-pointer flex items-center text-gray-900 hover:text-gray-600 dark:text-gray-50 dark:hover:text-gray-300 duration-500">
+          <a href={"/"}>Forest Haven Resort</a>
         </div>
         <div
           onClick={() => setMenuOpen(!menuOpen)}
@@ -45,14 +39,14 @@ const Navbar = () => {
           <li>
             {auth.isLoggedIn ? (
               <a
-                className="text-white hover:text-slate-300 duration-500 md:ml-8 text-xl md:my-1 my-7 cursor-pointer"
+                className="text-gray-900 hover:text-gray-600 dark:text-gray-50 dark:hover:text-gray-300 duration-500 md:ml-8 text-xl md:my-1 my-7 cursor-pointer"
                 onClick={auth.logout}
               >
-                logout
+                Logout
               </a>
             ) : (
               <a
-                className="text-white hover:text-slate-300 duration-500 md:ml-8 text-xl md:my-1 my-7"
+                className="text-gray-900 hover:text-gray-600 dark:text-gray-50 dark:hover:text-gray-300 duration-500 md:ml-8 text-xl md:my-1 my-7"
                 href="/loginpage"
               >
                 Login

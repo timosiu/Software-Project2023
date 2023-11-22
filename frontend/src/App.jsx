@@ -12,9 +12,10 @@ import { AuthContext } from "./context/auth-context";
 import Homepage from "./homepage/Homepage";
 import Loginpage from "./loginpage/Loginpage";
 import Contactpage from "./contactpage/Contactpage";
-import LocationListpage from "./locationpage/LocationListpage";
+import ServiceListpage from "./servicepage/ServiceListpage";
 import Profilepage from "./profilepage/Profilepage";
 import Navbar from "./navbar/Navbar";
+import Footer from "./footer/Footer";
 import "./App.css";
 
 const queryClient = new QueryClient();
@@ -24,12 +25,12 @@ let logoutTimer;
 // VITE_API_URL
 function App() {
   const [token, setToken] = useState(false);
-  const [userId, setuser] = useState(false);
+  const [userId, setUser] = useState(false);
   const [tokenExpirationDate, setTokenExpirationDate] = useState(false);
 
   const login = useCallback((uid, token, email, expirationDate) => {
     setToken(token);
-    setuser(uid);
+    setUser(uid);
 
     const tokenExpirationDate =
       expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
@@ -46,7 +47,7 @@ function App() {
 
   const logout = useCallback(() => {
     setToken(null);
-    setuser(null);
+    setUser(null);
     setTokenExpirationDate(null);
     localStorage.removeItem("userData");
   }, []);
@@ -81,10 +82,9 @@ function App() {
       <Route path="/" element={<Homepage />} />
       <Route path="/loginpage" element={<Loginpage />} />
       <Route path="/contactpage" element={<Contactpage />} />
-      <Route path="/locationpage" element={<LocationListpage />} />
+      <Route path="/servicepage" element={<ServiceListpage />} />
       <Route path="/profile" element={<Profilepage />} />
       <Route path="*" element={<Navigate to="/" />} />
-      {/* additional pages here */}
     </Routes>
   );
 
@@ -101,8 +101,8 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <Router>
           <Navbar />
-          {/* navigation bar here */}
           {routes}
+          <Footer />
         </Router>
       </QueryClientProvider>
     </AuthContext.Provider>
