@@ -13,6 +13,7 @@ import Homepage from "./homepage/Homepage";
 import Loginpage from "./loginpage/Loginpage";
 import Contactpage from "./contactpage/Contactpage";
 import LocationListpage from "./locationpage/LocationListpage";
+import Profilepage from "./profilepage/Profilepage";
 import Navbar from "./navbar/Navbar";
 import "./App.css";
 
@@ -81,6 +82,7 @@ function App() {
       <Route path="/loginpage" element={<Loginpage />} />
       <Route path="/contactpage" element={<Contactpage />} />
       <Route path="/locationpage" element={<LocationListpage />} />
+      <Route path="/profile" element={<Profilepage />} />
       <Route path="*" element={<Navigate to="/" />} />
       {/* additional pages here */}
     </Routes>
