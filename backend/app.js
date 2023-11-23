@@ -1,5 +1,6 @@
 const express = require("express");
 const users = require("./routes/users");
+const rooms = require("./routes/rooms");
 const services = require("./routes/services");
 const activities = require("./routes/activities");
 const reviews = require("./routes/reviews");
@@ -18,6 +19,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api/users", users);
+app.use("/api/rooms", rooms);
 app.use("/api/services", services);
 app.use("/api/activities", activities);
 app.use("/api/reviews", reviews);
