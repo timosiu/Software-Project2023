@@ -8,6 +8,24 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `id` varchar(36) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(1000),
+  `amenities` varchar(255),
+  `price` FLOAT NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+CREATE TABLE IF NOT EXISTS `room_images` (
+  `id` varchar(36) NOT NULL,
+  `room_id` varchar(36) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 CREATE TABLE IF NOT EXISTS `services` (
   `id` varchar(36) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -61,6 +79,62 @@ VALUES (
     'Matti Meikalainen',
     'matti@meikalainen.com',
     '$2a$12$stzoKdDeAhklwUiwIKyK7./Ijl3L03UxMyKg.ElzCrgQCW9wkA7Wi'
+  );
+INSERT INTO `rooms` (`id`, `title`, `description`, `amenities`, `price`)
+VALUES (
+    1,
+    'Serene Forest Suite',
+    'Indulge in the tranquility of our Serene Forest Suite, where nature seamlessly intertwines with luxury. This thoughtfully designed haven invites you to unwind amidst the gentle rustle of leaves and the dappled sunlight filtering through the trees. Adorned with earthy tones and natural textures, the Serene Forest Suite offers a harmonious escape complete with panoramic views of the surrounding woodlands. Immerse yourself in the serenity of nature while enjoying the comfort of modern amenities, creating an enchanting retreat that seamlessly blends the outdoors with unparalleled relaxation.',
+    '["TV","Safe","Minibar","Bath with rain shower and bathtub","Air conditioning","King-size bed","Desk and chair","Blackout curtains","Free wifi","Bathrobes and towels"]',
+    385
+  );
+INSERT INTO `rooms` (`id`, `title`, `description`, `amenities`, `price`)
+VALUES (
+    2,
+    'Room 2',
+    'Description text for Room 2',
+    '["TV","Safe","Minibar","Bath with rain shower and bathtub","Air conditioning","King-size bed"]',
+    325
+  );
+INSERT INTO `rooms` (`id`, `title`, `description`, `amenities`, `price`)
+VALUES (
+    3,
+    'Room 3',
+    'Description text for Room 3',
+    '["TV","Safe","Minibar","Bath with rain shower and bathtub","Air conditioning"]',
+    355
+  );
+INSERT INTO `rooms` (`id`, `title`, `description`, `amenities`, `price`)
+VALUES (
+    4,
+    'Room 4',
+    'Description text for Room 4',
+    '["TV","Safe","Minibar","Bath with rain shower and bathtub","Air conditioning","King-size bed","Desk and chair","Blackout curtains","Free wifi"]',
+    365
+  );
+INSERT INTO `room_images` (`id`, `room_id`, `image`)
+VALUES (
+    1,
+    1,
+    'https://monbret.com/cdn/shop/articles/mark-champs-Id2IIl1jOB0-unsplash.jpg?v=1686999360&width=1100'
+  );
+INSERT INTO `room_images` (`id`, `room_id`, `image`)
+VALUES (
+    2,
+    2,
+    'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg'
+  );
+INSERT INTO `room_images` (`id`, `room_id`, `image`)
+VALUES (
+    3,
+    3,
+    'https://www.hospitalitynet.org/picture/xxl_153137742.jpg?t=1644918765'
+  );
+INSERT INTO `room_images` (`id`, `room_id`, `image`)
+VALUES (
+    4,
+    4,
+    'https://www.matkapojat.fi//images/imagemanager/thumbnails/Nordic_Hotel_Forum_Tallinna_standard_doubleroom_720x490.f5256ef39a95e9cb4b0a97be2f0240059485db75.jpg'
   );
 INSERT INTO `services` (`id`, `title`, `description`)
 VALUES (
