@@ -1,14 +1,14 @@
-# Hippy Hotel | Software Project 2023
+# Forest Haven Resort | Software Project 2023
 
 ---
 
-## Project name: Hippy Hotel
+## Project name: Forest Haven Resort
 
 ### Project description
 
-This project is a web application for a company that rents out guesthouses and other types of temporal accommodation. The trick being that the accommodations are "Last-Minute" deals, meaning that the accommodations are only available for a short period of time. The project takes inspiration from the idea of combining Airbnb and ResQ Club as a service.
+This project is a web application for a hotel that rents out rooms and offers other services and activities. The hotel in question is a hippie themed hotel with a focus on sustainability and eco-friendliness. The hotel is imagined to be located in a rural area, surrounded by nature.
 
-The application is meant to be used by the company's customers to book accommodations. Users would also be able to rate the accommodations and other users based on their experiences. The application would also have a feature for the company's employees to manage the accommodations and the users. The application should also feature a forum for the users to discuss about the accommodations and other topics.
+The application is meant to be used by the hotel's customers to book rooms and activities offered by the hotel. Users sould also be able to review their experiences and the hotel's services.
 
 The project is based on the customer team's vision and requirements. The customer team was given a task to create a e-commerce platform based on the prompt "Hippy Hotel".
 
