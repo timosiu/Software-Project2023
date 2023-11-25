@@ -122,7 +122,7 @@ const Loginpage = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className=" bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text font-bold py-2 px-4 rounded-lg"
+            className=" bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text font-bold py-2 px-4"
           >
             Sign in
           </button>
@@ -189,7 +189,7 @@ const Loginpage = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className=" bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text font-bold py-2 px-4 rounded-lg"
+            className=" bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text font-bold py-2 px-4"
           >
             Register
           </button>

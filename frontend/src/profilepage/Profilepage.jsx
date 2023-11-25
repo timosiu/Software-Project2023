@@ -65,7 +65,7 @@ const Profilepage = () => {
     content = "Something went wrong";
   } else {
     content = (
-      <div className="grid grid-cols-3 gap-y-32 gap-x-10 mt-20 place-items-center bg-gray-50 dark:bg-neutral-800 rounded-t-3xl w-full p-10 pt-20 h-screen">
+      <div className="grid grid-cols-3 gap-y-32 gap-x-10 mt-20 place-items-center bg-light-bg dark:bg-dark-bg w-full p-10 pt-20 h-screen">
         <div className="">
           <img
             src={userData.image}
@@ -80,7 +80,7 @@ const Profilepage = () => {
                 placeholder="Image URL..."
               ></input>
               <button
-                className=" bg-sky-500 hover:bg-sky-700 text-gray-50 font-bold py-2 px-4 rounded-lg"
+                className=" bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text font-bold py-2 px-4"
                 type="submit"
               >
                 Update Picture
@@ -89,16 +89,16 @@ const Profilepage = () => {
           )}
         </div>
         <div className="">
-          <h1 className="text-xl text-gray-900 dark:text-gray-50 underline">
+          <h1 className="text-xl text-light-text dark:text-dark-text underline">
             Info
           </h1>
-          <p className="text-base text-gray-900 dark:text-gray-50">
+          <p className="text-base text-light-text dark:text-dark-text">
             Name: {userData.name}
           </p>
-          <p className="text-base text-gray-900 dark:text-gray-50">
+          <p className="text-base text-light-text dark:text-dark-text">
             Email: {userData.email}
           </p>
-          <p className="text-base text-gray-900 dark:text-gray-50">
+          <p className="text-base text-light-text dark:text-dark-text">
             Account Created: {userData.created}
           </p>
           <br />
@@ -108,9 +108,9 @@ const Profilepage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-sky-500 to-pink-500 h-screen">
+    <div className="flex flex-col items-center justify-center">
       <div className="flex flex-col place-items-center min-h-1/2 mx-10">
-        <h1 className="text-8xl mt-32 text-gray-50 text-center">
+        <h1 className="text-8xl mt-32 text-light-text dark:text-dark-text text-center">
           Your Profile
         </h1>
       </div>
