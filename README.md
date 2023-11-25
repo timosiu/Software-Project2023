@@ -69,4 +69,4 @@ The project is developed using the following technologies:
 
 ## Project links
 
-#### The project is deployed on Render and can be found [here](https://hippie-hotel.onrender.com/).
+#### The project is deployed on Render and can be found [here](https://foresthavenresort.onrender.com/).
