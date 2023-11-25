@@ -88,7 +88,7 @@ const Loginpage = () => {
         <div className={`mt-${authError ? "1" : "10"}`}>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-900 dark:text-gray-50"
+            className="block text-sm font-medium text-light-text dark:text-dark-text"
           >
             Email
           </label>
@@ -97,7 +97,7 @@ const Loginpage = () => {
             name="email"
             id="email"
             ref={emailRef}
-            className=" w-full bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
+            className=" w-full bg-light-bg dark:bg-dark-bg border border-light-text dark:border-dark-text text-light-text dark:text-dark-text sm:text-sm"
             placeholder="you@example.com"
             required=""
           ></input>
@@ -105,7 +105,7 @@ const Loginpage = () => {
         <div className="">
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-900 dark:text-gray-50"
+            className="block text-sm font-medium text-light-text dark:text-dark-text"
           >
             Password
           </label>
@@ -114,7 +114,7 @@ const Loginpage = () => {
             name="password"
             id="password"
             ref={passwordRef}
-            className=" w-full bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
+            className=" w-full bg-light-bg dark:bg-dark-bg border border-light-text dark:border-dark-text text-light-text dark:text-dark-text sm:text-sm"
             placeholder="*******"
             required=""
           ></input>
@@ -122,7 +122,7 @@ const Loginpage = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className=" bg-sky-500 hover:bg-sky-700 text-gray-50 font-bold py-2 px-4 rounded-lg"
+            className=" bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text font-bold py-2 px-4 rounded-lg"
           >
             Sign in
           </button>
@@ -138,7 +138,7 @@ const Loginpage = () => {
         <div className={`mt-${authError ? "1" : "10"}`}>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-900 dark:text-gray-50"
+            className="block text-sm font-medium text-light-text dark:text-dark-text"
           >
             Name
           </label>
@@ -147,7 +147,7 @@ const Loginpage = () => {
             name="name"
             id="name"
             ref={nameRef}
-            className="w-full bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
+            className="w-full bg-light-bg dark:bg-dark-bg border border-light-text dark:border-dark-text text-light-text dark:text-dark-text sm:text-sm"
             placeholder="Your Name"
             required=""
           ></input>
@@ -155,7 +155,7 @@ const Loginpage = () => {
         <div className=" mt-10">
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-900 dark:text-gray-50"
+            className="block text-sm font-medium text-light-text dark:text-dark-text"
           >
             Email
           </label>
@@ -164,7 +164,7 @@ const Loginpage = () => {
             name="email"
             id="email"
             ref={emailRef}
-            className=" w-full bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
+            className=" w-full bg-light-bg dark:bg-dark-bg border border-light-text dark:border-dark-text text-light-text dark:text-dark-text sm:text-sm"
             placeholder="you@example.com"
             required=""
           ></input>
@@ -172,7 +172,7 @@ const Loginpage = () => {
         <div className="">
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-900 dark:text-gray-50"
+            className="block text-sm font-medium text-light-text dark:text-dark-text"
           >
             Password
           </label>
@@ -181,7 +181,7 @@ const Loginpage = () => {
             name="password"
             id="password"
             ref={passwordRef}
-            className=" w-full bg-gray-50 dark:bg-neutral-800 border border-gray-200 text-gray-900 dark:text-gray-50 sm:text-sm"
+            className=" w-full bg-light-bg dark:bg-dark-bg border border-light-text dark:border-dark-text text-light-text dark:text-dark-text sm:text-sm"
             placeholder="*******"
             required=""
           ></input>
@@ -189,7 +189,7 @@ const Loginpage = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className=" bg-sky-500 hover:bg-sky-700 text-gray-50 font-bold py-2 px-4 rounded-lg"
+            className=" bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text font-bold py-2 px-4 rounded-lg"
           >
             Register
           </button>
@@ -199,26 +199,26 @@ const Loginpage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-sky-500 to-pink-500 h-screen">
-      <div className="inline-flex ">
+    <div className="flex flex-col items-center justify-center">
+      <div className="inline-flex">
         <button
           onClick={loginMode}
-          className="max-w-md px-10 
-          bg-gray-50 text-black font-bold hover:bg-gray-500 
-          dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-600 rounded-t-lg"
+          className="max-w-md px-10 mt-32
+          bg-light-bg text-light-text font-bold hover:bg-light-accent
+          dark:bg-dark-bg dark:text-dark-text dark:hover:bg-dark-accent border border-b-0 border-r-0 border-light-text dark:border-dark-text"
         >
           Sign in
         </button>
         <button
           onClick={loginMode}
-          className="max-w-md px-10 
-          bg-gray-50 text-black font-bold hover:bg-gray-500 
-          dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-600 rounded-t-lg"
+          className="max-w-md px-10 mt-32
+          bg-light-bg text-light-text font-bold hover:bg-light-accent 
+          dark:bg-dark-bg dark:text-dark-text dark:hover:bg-dark-accent border border-b-0 border-l-0 border-light-text dark:border-dark-text"
         >
           Register
         </button>
       </div>
-      <div className="max-w-sm  px-10 bg-gray-50 dark:bg-neutral-800 rounded-lg ">
+      <div className="max-w-sm  px-10 mb-10 bg-light-bg dark:bg-dark-bg border border-light-text dark:border-dark-text">
         {authError && <ErrorBox errorText={authError} />}
         {content}
         {isLoading && <LoadingSpinner />}

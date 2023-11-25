@@ -89,23 +89,25 @@ function App() {
   );
 
   return (
-    <AuthContext.Provider
-      value={{
-        isLoggedIn: !!token,
-        token: token,
-        userId: userId,
-        login: login,
-        logout: logout,
-      }}
-    >
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <Navbar />
-          {routes}
-          <Footer />
-        </Router>
-      </QueryClientProvider>
-    </AuthContext.Provider>
+    <div className="min-h-screen bg-light-bg dark:bg-dark-bg">
+      <AuthContext.Provider
+        value={{
+          isLoggedIn: !!token,
+          token: token,
+          userId: userId,
+          login: login,
+          logout: logout,
+        }}
+      >
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            <Navbar />
+            {routes}
+            <Footer />
+          </Router>
+        </QueryClientProvider>
+      </AuthContext.Provider>
+    </div>
   );
 }
 
