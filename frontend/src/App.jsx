@@ -13,6 +13,7 @@ import Homepage from "./homepage/Homepage";
 import Loginpage from "./loginpage/Loginpage";
 import Contactpage from "./contactpage/Contactpage";
 import ServiceListpage from "./servicepage/ServiceListpage";
+import Sustainabilitypage from "./sustainabilitypage/Sustainabilitypage";
 import Profilepage from "./profilepage/Profilepage";
 import Navbar from "./navbar/Navbar";
 import Footer from "./footer/Footer";
@@ -83,6 +84,7 @@ function App() {
       <Route path="/loginpage" element={<Loginpage />} />
       <Route path="/contactpage" element={<Contactpage />} />
       <Route path="/servicepage" element={<ServiceListpage />} />
+      <Route path="/sustainabilitypage" element={<Sustainabilitypage />} />
       <Route path="/profile" element={<Profilepage />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
