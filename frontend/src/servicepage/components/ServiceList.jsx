@@ -6,7 +6,7 @@ const ServiceList = ({ services }) => {
   }
 
   return (
-    <div className="grid grid-cols-3 mt-20 place-items-center bg-gray-50 dark:bg-neutral-800 rounded-t-3xl min-h-screen w-full p-10 divide-y divide-gray-900 dark:divide-gray-50 gap-0">
+    <div className="grid grid-cols-3 mt-5 place-items-center bg-light-bg dark:bg-dark-bg rounded-t-3xl min-h-screen w-full p-10 divide-y divide-light-text dark:divide-dark-text gap-0">
       {services.map((service) => (
         <ServiceItem key={service.id} service={service} />
       ))}

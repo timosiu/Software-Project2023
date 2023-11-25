@@ -9,42 +9,52 @@ import { TextCardLeft, TextCardRight } from "../components/TextCard";
 
 const Homepage = () => {
   return (
-    <div className="flex flex-col place-items-center bg-gradient-to-br from-sky-500 to-pink-500 min-h-screen">
+    <div className="flex flex-col place-items-center bg-light-accent min-h-screen">
       <div className="flex flex-col place-items-center min-h-1/2 mx-10">
-        <h1 className="text-8xl mt-32 text-gray-50 text-center">Hippy Hotel</h1>
-        <h2 className="text-5xl sm:text-6xl mt-10 text-gray-50 text-center">
-          Your High-End Hotel Alternative
-        </h2>
+        <h1 className="text-3xl md:text-4xl mt-80 text-gray-50 text-center">
+          Your retreat in the heart of Tampere
+        </h1>
       </div>
-      <div className="grid grid-cols-3 gap-y-32 gap-x-10 mt-20 place-items-center bg-gray-50 dark:bg-neutral-800 rounded-t-3xl w-full p-10 pt-20">
-        <TextCardLeft
-          title={"Last Minute Accommodations"}
+      <div className="grid grid-cols-3 gap-y-32 gap-x-10 mt-5 place-items-center bg-light-bg dark:bg-dark-bg p-10 pt-20">
+        <TextCardRight
+          title={""}
           text={
-            "Find unique, affordable, and last-minute accommodations that resonate with your values, whether it's a cozy cabin in the woods or an artistic urban loft."
+            "Embracing a mindful approach to hospitality, we provide eco-conscious rooms, vibrant communal spaces, and a range of holistic services that resonate with the ethos of embracing nature, community, and personal well-being."
           }
           Img={HomeModernIcon}
         />
+        <p className="col-span-3">Room carousel</p>
         <TextCardRight
-          title={"Community Vibes"}
+          title={"Create experiences"}
           text={
-            "Connect with like-minded travelers and hosts who share your passion for authentic, off-the-beaten-path experiences."
+            "Immerse yourself in a dual experience at our hostel, where thrilling nature adventures await alongside serene relaxation. Strike the perfect balance between exhilaration and serenity during your stay with us. "
           }
+          link={"/activitypage"}
+          linkText={"Book your activities"}
           Img={UserGroupIcon}
         />
         <TextCardLeft
-          title={"Profiles & Reviews"}
+          title={"Bohemian chic"}
           text={
-            "Detailed user and company profiles with ratings and reviews, ensuring transparency and trust among our community members."
+            "Offer a tribute to the free spirited 1960s, with an emphasis on luxury and comfort. "
           }
+          link={"/servicepage"}
+          linkText={"Discover our services"}
           Img={StarIcon}
         />
         <TextCardRight
-          title={"Search & Book"}
+          title={"Sustainability"}
           text={
-            "Our user-friendly search feature lets you discover hidden gems in non-touristy areas, even at the eleventh hour."
+            "Our commitment to sustainability is unparalleled. Choosing to stay with us significantly diminishes your carbon footprint. "
           }
+          link={"/sustainabilitypage"}
+          linkText={"Learn more"}
           Img={MagnifyingGlassIcon}
         />
+        <button className="col-span-3 bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text duration-500 text-5xl py-2 px-4 shadow-2xl">
+          Book Now!
+        </button>
+        <p className="col-span-3">Map</p>
       </div>
     </div>
   );
