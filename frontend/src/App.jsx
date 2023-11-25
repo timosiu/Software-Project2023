@@ -14,6 +14,7 @@ import Loginpage from "./loginpage/Loginpage";
 import Contactpage from "./contactpage/Contactpage";
 import ServiceListpage from "./servicepage/ServiceListpage";
 import Profilepage from "./profilepage/Profilepage";
+import ReservationPage from "./reservationpage/ReservationPage";
 import Navbar from "./navbar/Navbar";
 import Footer from "./footer/Footer";
 import "./App.css";
@@ -84,6 +85,7 @@ function App() {
       <Route path="/contactpage" element={<Contactpage />} />
       <Route path="/servicepage" element={<ServiceListpage />} />
       <Route path="/profile" element={<Profilepage />} />
+      <Route path="/reservation" element={<ReservationPage />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
