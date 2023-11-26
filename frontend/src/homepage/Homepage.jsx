@@ -4,10 +4,12 @@ import {
   StarIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
+import { useNavigate } from "react-router-dom";
 
 import { TextCardLeft, TextCardRight } from "../components/TextCard";
 
 const Homepage = () => {
+  let navigate = useNavigate();
   return (
     <div className="flex flex-col place-items-center bg-light-accent min-h-screen">
       <div className="flex flex-col place-items-center min-h-1/2 mx-10">
@@ -51,7 +53,10 @@ const Homepage = () => {
           linkText={"Learn more"}
           Img={MagnifyingGlassIcon}
         />
-        <button className="col-span-3 bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text duration-500 text-5xl py-2 px-4 shadow-2xl">
+        <button
+          onClick={() => navigate("/reservation")}
+          className="col-span-3 bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text duration-500 text-5xl py-2 px-4 shadow-2xl"
+        >
           Book Now!
         </button>
         <p className="col-span-3">Map</p>
