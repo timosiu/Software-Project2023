@@ -1,27 +1,28 @@
-import {
-  HomeModernIcon,
-  MagnifyingGlassIcon,
-  StarIcon,
-  UserGroupIcon,
-} from "@heroicons/react/24/solid";
-
 import { TextCardLeft, TextCardRight } from "../components/TextCard";
+import HeaderImage from "../assets/Header.jpg";
+import ResortImage from "../assets/Resort.jpg";
+import ActivitiesImage from "../assets/Activities.png";
+import ServicesImage from "../assets/Services.jpg";
+import SustainabilityImage from "../assets/Sustainability.jpg";
 
 const Homepage = () => {
   return (
     <div className="flex flex-col place-items-center bg-light-accent min-h-screen">
-      <div className="flex flex-col place-items-center min-h-1/2 mx-10">
-        <h1 className="text-3xl md:text-4xl mt-80 text-gray-50 text-center">
+      <div
+        className="flex flex-col place-items-center min-h-1/2 mx-10 bg-cover bg-center w-full"
+        style={{ backgroundImage: `url(${HeaderImage})` }}
+      >
+        <h1 className="text-3xl md:text-4xl mt-80 pb-2 text-gray-50 text-center bg-black bg-opacity-50 w-full">
           Your retreat in the heart of Tampere
         </h1>
       </div>
-      <div className="grid grid-cols-3 gap-y-32 gap-x-10 mt-5 place-items-center bg-light-bg dark:bg-dark-bg p-10 pt-20">
+      <div className="grid grid-cols-3 gap-y-32 gap-x-10 mt-0 place-items-center bg-light-bg dark:bg-dark-bg p-10 pt-20 w-full">
         <TextCardRight
           title={""}
           text={
             "Embracing a mindful approach to hospitality, we provide eco-conscious rooms, vibrant communal spaces, and a range of holistic services that resonate with the ethos of embracing nature, community, and personal well-being."
           }
-          Img={HomeModernIcon}
+          Img={ResortImage}
         />
         <p className="col-span-3">Room carousel</p>
         <TextCardRight
@@ -31,7 +32,7 @@ const Homepage = () => {
           }
           link={"/activitypage"}
           linkText={"Book your activities"}
-          Img={UserGroupIcon}
+          Img={ActivitiesImage}
         />
         <TextCardLeft
           title={"Bohemian chic"}
@@ -40,16 +41,16 @@ const Homepage = () => {
           }
           link={"/servicepage"}
           linkText={"Discover our services"}
-          Img={StarIcon}
+          Img={ServicesImage}
         />
         <TextCardRight
           title={"Sustainability"}
           text={
-            "Our commitment to sustainability is unparalleled. Choosing to stay with us significantly diminishes your carbon footprint. "
+            "Our commitment to sustainability is unparalleled. Choosing to stay with us significantly diminishes your carbon footprint.\n "
           }
           link={"/sustainabilitypage"}
           linkText={"Learn more"}
-          Img={MagnifyingGlassIcon}
+          Img={SustainabilityImage}
         />
         <button className="col-span-3 bg-haven-red hover:bg-light-accent dark:hover:bg-dark-accent text-light-text dark:text-dark-text duration-500 text-5xl py-2 px-4 shadow-2xl">
           Book Now!
