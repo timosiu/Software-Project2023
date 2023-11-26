@@ -1,5 +1,5 @@
 import { TextCardRight } from "../components/TextCard";
-import { HomeModernIcon } from "@heroicons/react/24/solid";
+import ContactImage from "../assets/Contact.jpg";
 
 const Contactpage = () => {
   return (
@@ -13,7 +13,7 @@ const Contactpage = () => {
           text={
             "We are available 24/7. You can contact us by email on \nquestions@foresthavenresort.com \nor by phone at \n+358 9 6128 2000."
           }
-          Img={HomeModernIcon}
+          Img={ContactImage}
         />
       </div>
     </div>

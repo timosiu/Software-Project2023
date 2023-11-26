@@ -14,7 +14,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="shadow-xl w-full fixed top-0 left-0 bg-dark-text dark:bg-dark-bg z-10">
+    <div className="shadow-xl w-full fixed top-0 left-0 bg-light-bg dark:bg-dark-bg z-10">
       <div className="md:flex items-center justify-between py-4 md:pr-20 lg:pr-40 px-10">
         <div className="font-ephesis text-4xl cursor-pointer flex items-center text-light-text hover:text-light-accent dark:text-dark-text dark:hover:text-dark-accent duration-500">
           <a href={"/"}>Forest Haven Resort</a>
