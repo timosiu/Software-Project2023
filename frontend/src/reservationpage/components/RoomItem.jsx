@@ -12,9 +12,15 @@ const RoomItem = ({ room, isSelected }) => {
         alt={room.title}
         className="w-1/2 h-40 object-cover object-center"
       />
-      <div className="flex p-4 flex-col">
+      <div className="flex p-4 pb-0 flex-col">
         <h3 className="text-2xl font-semibold mb-2">{room.title}</h3>
-        <p className="  text-gray-700">${room.price}/night</p>
+        <p className="  text-gray-700">{room.price} €/night</p>
+        <a
+          href={`/rooms/${room.id}`}
+          className="text-haven-red underline mt-auto"
+        >
+          Learn More
+        </a>
       </div>
     </div>
   );

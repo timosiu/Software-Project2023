@@ -20,6 +20,7 @@ import ReservationPage from "./reservationpage/ReservationPage";
 import Navbar from "./navbar/Navbar";
 import Footer from "./footer/Footer";
 import "./App.css";
+import Roompage from "./reservationpage/Roompage";
 
 const queryClient = new QueryClient();
 
@@ -90,6 +91,7 @@ function App() {
       <Route path="/valuepage" element={<Valuepage />} />
       <Route path="/profile" element={<Profilepage />} />
       <Route path="/reservation" element={<ReservationPage />} />
+      <Route path="/rooms/:id" element={<Roompage />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

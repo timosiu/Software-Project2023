@@ -4,3 +4,8 @@ export const getRooms = async () => {
   const response = await fetch(url + "/api/rooms");
   return await response.json();
 };
+
+export const getRoom = async (id) => {
+  const response = await fetch(url + "/api/rooms/" + id);
+  return await response.json();
+};
