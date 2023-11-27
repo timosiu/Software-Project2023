@@ -50,7 +50,7 @@ const Homepage = () => {
           text={
             "Our commitment to sustainability is unparalleled. Choosing to stay with us significantly diminishes your carbon footprint.\n "
           }
-          link={"/sustainabilitypage"}
+          link={"/valuepage"}
           linkText={"Learn more"}
           Img={SustainabilityImage}
         />

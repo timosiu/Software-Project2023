@@ -13,7 +13,8 @@ import Homepage from "./homepage/Homepage";
 import Loginpage from "./loginpage/Loginpage";
 import Contactpage from "./contactpage/Contactpage";
 import ServiceListpage from "./servicepage/ServiceListpage";
-import Sustainabilitypage from "./sustainabilitypage/Sustainabilitypage";
+import ActivityListpage from "./activitypage/ActivityListpage";
+import Valuepage from "./valuepage/Valuepage";
 import Profilepage from "./profilepage/Profilepage";
 import ReservationPage from "./reservationpage/ReservationPage";
 import Navbar from "./navbar/Navbar";
@@ -85,7 +86,8 @@ function App() {
       <Route path="/loginpage" element={<Loginpage />} />
       <Route path="/contactpage" element={<Contactpage />} />
       <Route path="/servicepage" element={<ServiceListpage />} />
-      <Route path="/sustainabilitypage" element={<Sustainabilitypage />} />
+      <Route path="/activitypage" element={<ActivityListpage />} />
+      <Route path="/valuepage" element={<Valuepage />} />
       <Route path="/profile" element={<Profilepage />} />
       <Route path="/reservation" element={<ReservationPage />} />
       <Route path="*" element={<Navigate to="/" />} />

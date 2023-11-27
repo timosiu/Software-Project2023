@@ -1,11 +1,18 @@
+import { useContext } from "react";
 import { FaInstagram, FaXTwitter } from "react-icons/fa6";
 
+import { AuthContext } from "../context/auth-context";
+
 const Footer = () => {
+  const auth = useContext(AuthContext);
+
   const Links = [
-    { name: "Booking", link: "/bookingpage" },
+    { name: "Booking", link: "/reservation" },
     { name: "Services", link: "/servicepage" },
+    { name: "Values", link: "/valuepage" },
     { name: "Activities", link: "/activitypage" },
-    { name: "Rooms", link: "/roompage" },
+    { name: "Contact", link: "/contactpage" },
+    ...(auth.isLoggedIn ? [{ name: "Profile", link: "/profile" }] : []),
   ];
 
   return (
