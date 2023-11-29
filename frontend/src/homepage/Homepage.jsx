@@ -5,9 +5,50 @@ import ActivitiesImage from "../assets/Activities.png";
 import ServicesImage from "../assets/Services.jpg";
 import SustainabilityImage from "../assets/Sustainability.jpg";
 import { useNavigate } from "react-router-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import { getRooms } from "./api/rooms";
+import { useQuery } from "react-query";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 const Homepage = () => {
   let navigate = useNavigate();
+  const { isLoading, error, data } = useQuery("rooms", () => getRooms());
+
+  let carouselContent = "";
+  if (isLoading) {
+    carouselContent = <LoadingSpinner />;
+  } else if (error) {
+    carouselContent = "Carousel error";
+  } else {
+    carouselContent = (
+      <div className="grid grid-cols-1 justify-items-center w-full">
+        <h1 className="text-3xl md:text-4xl pb-2 bg-light-bg text-center w-full">
+          Our Rooms
+        </h1>
+        <Carousel
+          autoPlay={true}
+          infiniteLoop={true}
+          swipeable={true}
+          showThumbs={false}
+          centerMode={true}
+          centerSlidePercentage={50}
+          emulateTouch={true}
+        >
+          {data.map((room) => (
+            <div className="w-full">
+              <img
+                className="object-fill aspect-video"
+                src={JSON.parse(room.roomImages)}
+              />
+              <p className="legend">{room.title}</p>
+            </div>
+          ))}
+        </Carousel>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col place-items-center bg-light-accent min-h-screen">
       <div
@@ -26,7 +67,9 @@ const Homepage = () => {
           }
           Img={ResortImage}
         />
-        <p className="col-span-3">Room carousel</p>
+      </div>
+      {carouselContent}
+      <div className="grid grid-cols-3 gap-y-32 gap-x-10 mt-0 place-items-center bg-light-bg dark:bg-dark-bg p-10 pt-20 w-full">
         <TextCardRight
           title={"Create experiences"}
           text={
