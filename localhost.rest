@@ -13,12 +13,31 @@ GET http://localhost:5000/api/activities
 GET http://localhost:5000/api/reviews
 
 ###
+GET http://localhost:5000/api/reservations
+
+###
+GET http://localhost:5000/api/reservations/myreservations
+
+###
 POST http://localhost:5000/api/reviews
 Content-Type: application/json
 Authorization: BEARER {{authToken}}
 
 {
   "message": "Test Review Message"
+}
+
+###
+POST http://localhost:5000/api/reservations
+Content-Type: application/json
+Authorization: BEARER {{authToken}}
+
+{
+  "roomId": 1,
+  "totalCost": 770,
+  "numberOfPeople": 1,
+  "startDate": "Thu Dec 07 2023",
+  "endDate": "Sat Dec 09 2023"
 }
 
 ###

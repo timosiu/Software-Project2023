@@ -66,6 +66,18 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+CREATE TABLE IF NOT EXISTS `reservations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(100) NOT NULL,
+  `room_id` varchar(100) NOT NULL,
+  `price_total` FLOAT NOT NULL,
+  `people_amount` int(11) NOT NULL,
+  `start_date` varchar(100) NOT NULL,
+  `end_date` varchar(100) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 INSERT INTO `users` (`id`, `name`, `email`, `password`)
 VALUES (
     1,
