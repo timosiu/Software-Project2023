@@ -36,12 +36,21 @@ const Homepage = () => {
           emulateTouch={true}
         >
           {data.map((room) => (
-            <div className="w-full">
+            <div
+              className="w-full cursor-pointer"
+              onClick={() => {
+                navigate(`/rooms/${room.id}`);
+              }}
+            >
               <img
                 className="object-fill aspect-video"
                 src={JSON.parse(room.roomImages)}
               />
-              <p className="legend">{room.title}</p>
+              <p className="legend">
+                {room.title}
+                <br />
+                {room.price} Eur/night
+              </p>
             </div>
           ))}
         </Carousel>
