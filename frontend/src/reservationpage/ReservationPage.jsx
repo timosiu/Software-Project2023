@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useQuery } from "react-query";
 
 import { getRooms } from "./api/rooms";
+import { AuthContext } from "../context/auth-context";
 import RoomList from "./components/RoomList";
 import Calendar from "./components/Calendar";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
 const ReservationPage = () => {
+  const auth = useContext(AuthContext);
   const { isLoading, error, data } = useQuery("rooms", getRooms);
 
   const [roomPrice, setRoomPrice] = useState(0);
@@ -20,6 +22,22 @@ const ReservationPage = () => {
   } else {
     roomList = <RoomList rooms={data} setRoomPrice={setRoomPrice} />;
   }
+
+  if (!auth.isLoggedIn) {
+    return (
+      <div className="container mx-auto flex flex-col items-center">
+        <h1 className="text-6xl my-8 mt-28 mb-10">Booking</h1>
+        <p className="text-2xl">
+          Please{" "}
+          <a href="/loginpage" className="text-haven-red underline">
+            login
+          </a>{" "}
+          to book a room.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto flex flex-col items-center min-h-screen">
       <h1 className="text-6xl my-8 mt-28 mb-10">Booking</h1>
