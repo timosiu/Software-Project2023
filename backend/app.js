@@ -14,6 +14,7 @@ const frontend = process.env.FRONTEND || "http://localhost:5173";
 const app = express();
 app.use(
   cors({
+    credentials: true,
     origin: [frontend],
   })
 );

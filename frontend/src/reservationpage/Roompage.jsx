@@ -56,7 +56,9 @@ const Roompage = () => {
             <div className="flex flex-row bg-light-accent p-5 justify-center mb-20">
               <ul className="grid grid-cols-1 sm:grid-cols-2">
                 {JSON.parse(data.amenities).map((amenity) => (
-                  <li className="list-disc ml-4 text-lg">{amenity}</li>
+                  <li key={amenity} className="list-disc ml-4 text-lg">
+                    {amenity}
+                  </li>
                 ))}
               </ul>
             </div>

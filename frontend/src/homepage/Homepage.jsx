@@ -37,6 +37,7 @@ const Homepage = () => {
         >
           {data.map((room) => (
             <div
+              key={room.id}
               className="w-full cursor-pointer"
               onClick={() => {
                 navigate(`/rooms/${room.id}`);
