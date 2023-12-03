@@ -1,6 +1,6 @@
 import { useState } from "react";
 import RoomItem from "./RoomItem";
-const RoomList = ({ rooms, setRoomPrice }) => {
+const RoomList = ({ rooms, setRoomPrice, setRoomId }) => {
   if (!rooms.length) {
     return <h3>No Rooms Found</h3>;
   }
@@ -10,6 +10,7 @@ const RoomList = ({ rooms, setRoomPrice }) => {
   const handleRoomSelect = (room) => {
     setSelectedRoom(room);
     setRoomPrice(room.price);
+    setRoomId(room.id);
   };
 
   return (
