@@ -12,6 +12,7 @@ const ReservationPage = () => {
   const { isLoading, error, data } = useQuery("rooms", getRooms);
 
   const [roomPrice, setRoomPrice] = useState(0);
+  const [roomId, setRoomId] = useState(null);
 
   let roomList;
 
@@ -20,7 +21,13 @@ const ReservationPage = () => {
   } else if (error) {
     roomList = <p>Sorry, something went wrong.</p>;
   } else {
-    roomList = <RoomList rooms={data} setRoomPrice={setRoomPrice} />;
+    roomList = (
+      <RoomList
+        rooms={data}
+        setRoomPrice={setRoomPrice}
+        setRoomId={setRoomId}
+      />
+    );
   }
 
   if (!auth.isLoggedIn) {
@@ -39,13 +46,15 @@ const ReservationPage = () => {
   }
 
   return (
-    <div className="container mx-auto flex flex-col items-center min-h-screen">
+    <div className="container mx-auto flex flex-col items-center">
       <h1 className="text-6xl my-8 mt-28 mb-10">Booking</h1>
-      <div className="flex-grow flex w-full">
-        <div className="w-1/2 p-4 mt-16">
-          <Calendar roomPrice={roomPrice} />
+      <div className="flex-grow flex-col md:flex-row flex w-full items-center md:items-start">
+        <div className="w-3/4 md:w-1/2 p-4 mt-16 text-center">
+          <Calendar roomPrice={roomPrice} roomId={roomId} />
         </div>
-        <div className="w-1/2 p-4 max-h-screen overflow-y-auto">{roomList}</div>
+        <div className="w-full md:w-1/2 p-4 max-h-screen overflow-y-auto mb-5">
+          {roomList}
+        </div>
       </div>
     </div>
   );

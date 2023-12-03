@@ -2,6 +2,8 @@ import { useState, useContext, useEffect, useRef } from "react";
 import { useQuery } from "react-query";
 import { AuthContext } from "../context/auth-context";
 import { getProfile, editImage } from "./api/users";
+import { getReservations } from "./api/reservations";
+import { getRooms } from "../reservationpage/api/rooms";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
 const Profilepage = () => {
@@ -20,6 +22,25 @@ const Profilepage = () => {
       retry: 2,
     }
   );
+
+  const {
+    isLoading: isLoadingRes,
+    error: errorRes,
+    data: dataRes,
+  } = useQuery(
+    ["reservations", auth.token],
+    () => getReservations(auth.token),
+    {
+      refetchOnWindowFocus: false,
+      retry: 2,
+    }
+  );
+
+  const {
+    isLoading: isLoadingRooms,
+    error: errorRooms,
+    data: dataRooms,
+  } = useQuery(["rooms"], getRooms);
 
   useEffect(() => {
     if (auth.isLoggedIn) {
@@ -65,7 +86,7 @@ const Profilepage = () => {
     content = "Something went wrong";
   } else {
     content = (
-      <div className="grid grid-cols-3 gap-y-32 gap-x-10 mt-20 place-items-center bg-light-bg dark:bg-dark-bg w-full p-10 pt-20 h-screen">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-32 gap-x-10 mt-20 sm:place-items-center bg-light-bg dark:bg-dark-bg w-full p-10">
         <div className="">
           <img
             src={userData.image}
@@ -107,6 +128,50 @@ const Profilepage = () => {
     );
   }
 
+  let reservationContent = "";
+
+  if (isLoadingRes || isLoadingRooms) {
+    reservationContent = <LoadingSpinner />;
+  } else if (errorRes || errorRooms) {
+    reservationContent = "Something went wrong";
+  } else {
+    reservationContent = (
+      <div className="flex flex-col mt-10 bg-light-bg w-full p-10 divide-y divide-light-text">
+        <h1 className="text-4xl text-light-text mb-5">Your Reservations</h1>
+        {dataRes.length == 0 && (
+          <p className="text-base text-light-text">You have no reservations</p>
+        )}
+        {dataRes.map((dataRes) => {
+          let room = dataRooms.find((room) => room.id === dataRes.room_id);
+          let startDate = new Date(dataRes.start_date).toLocaleDateString(
+            "en-GB",
+            {
+              weekday: "short",
+              year: "numeric",
+              month: "numeric",
+              day: "numeric",
+            }
+          );
+          let endDate = new Date(dataRes.end_date).toLocaleDateString("en-GB", {
+            weekday: "short",
+            year: "numeric",
+            month: "numeric",
+            day: "numeric",
+          });
+          return (
+            <div key={dataRes.id} className="text-base text-light-text py-5">
+              <p>Reservation ID: {dataRes.id}</p>
+              <p>Room: {room.title}</p>
+              <p>Check In: {startDate}</p>
+              <p>Check Out: {endDate}</p>
+              <p>Price: {dataRes.price_total} Eur</p>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="flex flex-col place-items-center min-h-1/2 mx-10">
@@ -115,6 +180,8 @@ const Profilepage = () => {
         </h1>
       </div>
       {content}
+
+      {reservationContent}
     </div>
   );
 };
