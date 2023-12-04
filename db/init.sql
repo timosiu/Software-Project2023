@@ -103,24 +103,24 @@ VALUES (
 INSERT INTO `rooms` (`id`, `title`, `description`, `amenities`, `price`)
 VALUES (
     2,
-    'Room 2',
-    'Description text for Room 2',
+    'Sunset Serenity Suite',
+    'Step into the "Sunset Serenity Suite," a luxurious haven infused with sunset hues and tranquility. Enjoy a king-sized bed draped in soft linens, an opulent en-suite bathroom with a soaking tub, and a private balcony offering breathtaking views - a perfect blend of luxury and natural beauty for a memorable stay.',
     '["TV","Safe","Minibar","Bath with rain shower and bathtub","Air conditioning","King-size bed"]',
     325
   );
 INSERT INTO `rooms` (`id`, `title`, `description`, `amenities`, `price`)
 VALUES (
     3,
-    'Room 3',
-    'Description text for Room 3',
+    'Tranquil Oasis Family Suite',
+    'Step into the "Tranquil Oasis Family Suite," a serene retreat designed for family comfort. Enjoy a spacious living area with picturesque views, a master bedroom with a king-sized bed, and a separate sleeping space for kids. The modern bathroom features a rainfall shower and soaking tub, while a private balcony invites moments of togetherness amidst tranquility and natural beauty.',
     '["TV","Safe","Minibar","Bath with rain shower and bathtub","Air conditioning"]',
     355
   );
 INSERT INTO `rooms` (`id`, `title`, `description`, `amenities`, `price`)
 VALUES (
     4,
-    'Room 4',
-    'Description text for Room 4',
+    'Green Serenity Skyline',
+    'Welcome to the "Green Serenity Skyline," an eco-luxury haven perched above the city. This elegantly designed retreat features panoramic city views, a king-sized bed with organic linens, and an en-suite bathroom adorned with energy-efficient fixtures. Relax on the private terrace, embracing nature while enjoying the sustainable luxury of this exclusive sanctuary.',
     '["TV","Safe","Minibar","Bath with rain shower and bathtub","Air conditioning","King-size bed","Desk and chair","Blackout curtains","Free wifi"]',
     365
   );

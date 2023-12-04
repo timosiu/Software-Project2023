@@ -73,7 +73,7 @@ const Homepage = () => {
         <TextCardRight
           title={""}
           text={
-            "Embracing a mindful approach to hospitality, we provide eco-conscious rooms, vibrant communal spaces, and a range of holistic services that resonate with the ethos of embracing nature, community, and personal well-being."
+            "Discover the epitome of bohemian luxury at our Forest Haven Resort, where vibrant tranquility, eco-conscious harmony, and indulgent comforts converge for an unforgettable retreat."
           }
           Img={ResortImage}
         />
