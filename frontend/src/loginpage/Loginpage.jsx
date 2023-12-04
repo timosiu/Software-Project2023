@@ -140,7 +140,7 @@ const Loginpage = () => {
             htmlFor="name"
             className="block text-sm font-medium text-light-text dark:text-dark-text"
           >
-            Name
+            Full Name
           </label>
           <input
             type="text"

@@ -10,7 +10,13 @@ const Valuepage = () => {
         <TextCardCenter
           title={""}
           text={
-            "Our hotel diligently implements recycling initiatives, ensuring that waste is minimized and materials are repurposed. Our goal is to minimize environmental impact and foresee responsible practices."
+            "Our primary goal is to ensure a comfortable stay for our guests whilst making sure that no waste is generated. We minimize environmental impact using such practices as; collecting rainwater and having low-flow toilets and faucets to help reduce the consumption of water. We use only biodegradable plastics in our establishment, to reduce the impact on nature. This combined with our innovative recycling program makes us truly one of a kind."
+          }
+        />
+        <TextCardCenter
+          title={""}
+          text={
+            "Being the epitome of luxury, we offer only the finest during your stay in our hotel. Our service, having been described as “impeccable” by previous customers, is anything a person could desire for their experience. We anticipate every need and are ready to cater to any request our customers could have. This, combined with our activities such as yoga and hiking, create an exclusive experience only possible with us."
           }
         />
         <TextCardCenter
