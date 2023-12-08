@@ -61,7 +61,9 @@ CREATE TABLE IF NOT EXISTS `activity_images` (
 CREATE TABLE IF NOT EXISTS `reviews` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(100) NOT NULL,
+  `room_id` varchar(100) NOT NULL,
   `message` varchar(255) NOT NULL,
+  `rating` tinyint NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -280,15 +282,19 @@ VALUES (
     7,
     'https://d1l57x9nwbbkz.cloudfront.net/files/s3fs-public/2022-09/canoeing-quetico-park-ontario.jpg?VersionId=5ZlWtCVOG7crlJONvW9542NSi.G2N2s'
   );
-INSERT INTO `reviews` (`id`, `user_id`, `message`)
+INSERT INTO `reviews` (`id`, `user_id`, `room_id`, `message`, `rating`)
 VALUES (
     1,
     2,
-    'Review message'
+    1,
+    'Review message',
+    5
   );
-INSERT INTO `reviews` (`id`, `user_id`, `message`)
+INSERT INTO `reviews` (`id`, `user_id`, `room_id`, `message`, `rating`)
 VALUES (
     2,
     2,
-    'Review message 2'
+    3,
+    'Review message 2',
+    3
   );
