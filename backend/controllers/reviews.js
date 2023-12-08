@@ -3,7 +3,8 @@ const reviews = require("../models/reviews");
 
 const getReviews = async (req, res) => {
   try {
-    const response = await reviews.findAllReviews();
+    const room_id = parseInt(req.params.id);
+    const response = await reviews.findReviewsByRoomId(room_id);
     if (response) {
       res.status(200).send(response);
     }
@@ -16,6 +17,7 @@ const getReviews = async (req, res) => {
 const createReview = async (req, res) => {
   const schema = Joi.object({
     message: Joi.string().min(3).required(),
+    rating: Joi.number().positive().required(),
   });
 
   const { error } = schema.validate(req.body);
@@ -25,8 +27,10 @@ const createReview = async (req, res) => {
   }
 
   const review = {
+    room_id: parseInt(req.params.id),
     user_id: req.userData.userId,
     message: req.body.message,
+    rating: req.body.rating,
   };
 
   try {

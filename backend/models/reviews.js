@@ -1,14 +1,15 @@
 const pool = require("../db/pool");
 
 const reviews = {
-  findAllReviews: () =>
+  findReviewsByRoomId: (room_id) =>
     new Promise((resolve, reject) => {
       pool.getConnection((err, connection) => {
         if (err) {
           return reject(err);
         }
         connection.query(
-          "SELECT reviews.*, users.name AS user_name, users.image AS user_image FROM reviews LEFT JOIN users on reviews.user_id=users.id;",
+          "SELECT reviews.id, reviews.message, reviews.rating, users.name AS user_name, users.image AS user_image FROM reviews LEFT JOIN users on reviews.user_id=users.id WHERE reviews.room_id LIKE ?;",
+          room_id,
           (err, result) => {
             connection.release();
             if (err) {

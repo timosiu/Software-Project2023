@@ -5,10 +5,10 @@ const verifyToken = require("../middleware/verifyToken");
 
 const { getReviews, createReview } = require("../controllers/reviews");
 
-router.get("/", getReviews);
+router.get("/:id", getReviews);
 
 router.use(verifyToken);
 
-router.post("/", createReview);
+router.post("/:id", createReview);
 
 module.exports = router;
