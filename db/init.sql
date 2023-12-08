@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(100) NOT NULL,
   `room_id` varchar(100) NOT NULL,
-  `message` varchar(255) NOT NULL,
+  `message` varchar(1600) NOT NULL,
   `rating` tinyint NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -80,19 +80,21 @@ CREATE TABLE IF NOT EXISTS `reservations` (
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
-INSERT INTO `users` (`id`, `name`, `email`, `password`)
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `image`)
 VALUES (
     1,
-    'Test User',
-    'test@user.com',
-    '$2a$12$stzoKdDeAhklwUiwIKyK7./Ijl3L03UxMyKg.ElzCrgQCW9wkA7Wi'
+    'Xavier Oeth',
+    'xavier@oeth.com',
+    '$2a$12$stzoKdDeAhklwUiwIKyK7./Ijl3L03UxMyKg.ElzCrgQCW9wkA7Wi',
+    'https://xsgames.co/randomusers/assets/avatars/male/69.jpg'
   );
-INSERT INTO `users` (`id`, `name`, `email`, `password`)
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `image`)
 VALUES (
     2,
-    'Matti Meikalainen',
-    'matti@meikalainen.com',
-    '$2a$12$stzoKdDeAhklwUiwIKyK7./Ijl3L03UxMyKg.ElzCrgQCW9wkA7Wi'
+    'Daniela Magnaye',
+    'daniela@magnaye.com',
+    '$2a$12$stzoKdDeAhklwUiwIKyK7./Ijl3L03UxMyKg.ElzCrgQCW9wkA7Wi',
+    'https://xsgames.co/randomusers/assets/avatars/female/69.jpg'
   );
 INSERT INTO `rooms` (`id`, `title`, `description`, `amenities`, `price`)
 VALUES (
@@ -196,7 +198,7 @@ INSERT INTO `activities` (`id`, `title`, `description`)
 VALUES (
     5,
     'Hiking with a guide',
-    'Explore the natural beauty of the surroundings with knowledgeable guides leading invigorating hikes, providing insights into the area’s flora, fauna and hidden gems'
+    'Explore the natural beauty of the surroundings with knowledgeable guides leading invigorating hikes, providing insights into the area''s flora, fauna and hidden gems'
   );
 INSERT INTO `activities` (`id`, `title`, `description`)
 VALUES (
@@ -287,14 +289,52 @@ VALUES (
     1,
     2,
     1,
-    'Review message',
-    5
+    'I recently stayed at this hotel and found the experience quite delightful. The room I stayed in was spacious and clean, providing a comfortable environment throughout my stay. The bed was cozy, offering a good night''s sleep after a long day of activities. The amenities were well-maintained, and the room service was prompt and efficient.
+The design and ambiance of the room were pleasing, creating a relaxing atmosphere. I particularly appreciated the attention to detail in the decor, which added a touch of elegance to the space. Additionally, the room had a nice view, allowing me to enjoy some scenic moments during my downtime.
+While my overall stay was enjoyable, there were a couple of areas that could have been improved upon. The Wi-Fi connection was a bit spotty at times, which made it slightly inconvenient for work-related tasks. Also, although the room was generally well-kept, I noticed a few minor maintenance issues that could use attention.
+Overall, this hotel room provided a comfortable and enjoyable experience. With its spaciousness, cleanliness, and pleasant ambiance, coupled with attentive service, it was a wonderful stay that I would consider revisiting in the future with hopes of even further enhancements.',
+    4
   );
 INSERT INTO `reviews` (`id`, `user_id`, `room_id`, `message`, `rating`)
 VALUES (
     2,
     2,
     3,
-    'Review message 2',
+    'My stay at this hotel was nothing short of exceptional. The room I stayed in exceeded all expectations, offering a luxurious and comfortable retreat. From the moment I stepped in, I was greeted with a spotlessly clean and well-appointed space. The bed was incredibly comfortable, providing a night of restful sleep, and the room''s layout was thoughtfully designed for convenience and functionality.
+The attention to detail in the room''s decor and amenities was impressive. Everything felt meticulously arranged, from the stylish furnishings to the high-quality toiletries provided. The panoramic view from the room was breathtaking, adding an extra layer of delight to the overall experience.
+The service provided was top-notch. The staff was not only courteous but also went above and beyond to ensure a memorable stay. From the warm welcome at check-in to the helpful recommendations from the concierge, every interaction was marked by professionalism and genuine hospitality.
+Furthermore, the hotel''s facilities, including the gym and spa, were of excellent quality, contributing to a well-rounded and indulgent experience. Throughout my stay, I encountered no issues with Wi-Fi or maintenance, showcasing the hotel''s commitment to delivering a flawless experience.
+In conclusion, this hotel room offered a perfect blend of luxury, comfort, and exceptional service. I would highly recommend it to anyone seeking a truly five-star experience and look forward eagerly to returning for another delightful stay.',
+    5
+  );
+INSERT INTO `reviews` (`id`, `user_id`, `room_id`, `message`, `rating`)
+VALUES (
+    3,
+    1,
+    2,
+    'My recent stay at this hotel was decent overall. The room I stayed in was comfortable and adequately sized for a pleasant stay. The bed was comfortable enough for a good night''s sleep, and the amenities provided the basics needed for a short stay.
+However, there were a few aspects that could be improved. The room, while generally clean, showed signs of wear and tear, and the decor felt a bit dated. Additionally, the Wi-Fi connection was somewhat unreliable, making it challenging to stay connected at times. Despite these issues, the staff was friendly and responsive, addressing concerns promptly.
+While it wasn''t a standout experience, the hotel provided a decent stay for the price, offering the essentials for a comfortable night''s rest.',
+    3
+  );
+INSERT INTO `reviews` (`id`, `user_id`, `room_id`, `message`, `rating`)
+VALUES (
+    4,
+    1,
+    4,
+    'My stay at this hotel was quite pleasant. The room I occupied was spacious and well-appointed, providing a comfortable and relaxing environment. The bed was cozy, and the cleanliness of the room was maintained to a good standard throughout my stay.
+The hotel''s staff were accommodating and friendly, ensuring a smooth check-in process and being responsive to any queries or requests I had during my stay. Additionally, the amenities offered, such as the in-room coffee maker and toiletries, added convenience to my stay.
+However, there were a couple of areas where improvements could be made. While the room was generally clean, there were a few minor maintenance issues that could use attention. Moreover, the Wi-Fi, though available, was a bit slow at times, which could be inconvenient for those relying heavily on internet access.
+Overall, the hotel provided a comfortable stay with friendly service. With a few enhancements in maintenance and internet speed, it could easily elevate the experience to a higher level.',
+    4
+  );
+INSERT INTO `reviews` (`id`, `user_id`, `room_id`, `message`, `rating`)
+VALUES (
+    5,
+    1,
+    1,
+    'My recent stay at this hotel was decent overall. The room I stayed in was comfortable and adequately sized for a pleasant stay. The bed was comfortable enough for a good night''s sleep, and the amenities provided the basics needed for a short stay.
+However, there were a few aspects that could be improved. The room, while generally clean, showed signs of wear and tear, and the decor felt a bit dated. Additionally, the Wi-Fi connection was somewhat unreliable, making it challenging to stay connected at times. Despite these issues, the staff was friendly and responsive, addressing concerns promptly.
+While it wasn''t a standout experience, the hotel provided a decent stay for the price, offering the essentials for a comfortable night''s rest.',
     3
   );
