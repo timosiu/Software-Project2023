@@ -24,8 +24,8 @@ app.use("/api/users", users);
 app.use("/api/rooms", rooms);
 app.use("/api/services", services);
 app.use("/api/activities", activities);
-app.use("/api/reviews", reviews);
 app.use("/api/reservations", reservations);
+app.use("/api/reviews", reviews);
 
 app.get("/health", (req, res) => {
   res.send("OK");
