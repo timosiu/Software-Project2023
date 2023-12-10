@@ -14,6 +14,7 @@ import { LoadingSpinner } from "../components/LoadingSpinner";
 const Homepage = () => {
   let navigate = useNavigate();
   const { isLoading, error, data } = useQuery("rooms", () => getRooms());
+  const GOOGLEAPIKEY = import.meta.env.VITE_GOOGLE_API;
 
   let carouselContent = "";
   if (isLoading) {
@@ -58,6 +59,11 @@ const Homepage = () => {
       </div>
     );
   }
+
+  let mapUrl =
+    "https://www.google.com/maps/embed/v1/place?key=" +
+    GOOGLEAPIKEY +
+    "&q=Lapinkaari 12, 33180 Tampere";
 
   return (
     <div className="flex flex-col place-items-center bg-light-accent min-h-screen">
@@ -113,7 +119,33 @@ const Homepage = () => {
         >
           Book Now!
         </button>
-        <p className="col-span-3">Map</p>
+      </div>
+      <div className="flex flex-col sm:flex-row col-span-2 items-center justify-center pt-10 pb-10 bg-light-bg w-full">
+        <iframe
+          className="container mx-auto px-20"
+          width="600"
+          height="450"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src={mapUrl}
+        ></iframe>
+
+        <div className="flex flex-col place-items-center px-20 sm:w-2/3 w-full">
+          <h3 className="text-4xl text-center text-light-text">Directions</h3>
+          <p className="text-md sm:text-lg text-center w-full sm:w-3/4 text-ellipsis whitespace-pre-line text-light-text">
+            We recommend using sustainable modes of transport, such as buses,
+            trains and trams to visit us. <br /> For example, if you are coming
+            from Helsinki, take the train to Tampere, then take Bus 2 until the
+            Koukkuniemi stop, and then walk down the Lapinkaari road. <br />
+            If you are coming from Tampere-Pirkkala Airport, take Bus 103 until
+            the Sorin Aukio D stop, and change to Bus 2, and follow previous
+            instructions.
+            <br />
+            We do also have parking available, in case you are visiting us with
+            your car.
+          </p>
+        </div>
       </div>
     </div>
   );
