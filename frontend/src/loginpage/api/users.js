@@ -1,4 +1,6 @@
 const url = import.meta.env.VITE_API_URL;
+
+// send login request to server
 export const loginUser = async ({ email, password }) => {
   const response = await fetch(url + "/api/users/login", {
     method: "POST",
@@ -15,6 +17,7 @@ export const loginUser = async ({ email, password }) => {
   return await responseHandler(response);
 };
 
+// send signup request to server
 export const signUpUser = async ({ name, email, password }) => {
   const response = await fetch(url + "/api/users/signup", {
     method: "POST",
@@ -31,6 +34,7 @@ export const signUpUser = async ({ name, email, password }) => {
   return await responseHandler(response);
 };
 
+// Handle response from server and throw error if error from server
 const responseHandler = async (res) => {
   try {
     let errorMessage;

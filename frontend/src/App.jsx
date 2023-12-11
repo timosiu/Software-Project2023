@@ -32,10 +32,12 @@ function App() {
   const [userId, setUser] = useState(false);
   const [tokenExpirationDate, setTokenExpirationDate] = useState(false);
 
+  // Handle logged in user's token and expiration date
   const login = useCallback((uid, token, email, expirationDate) => {
     setToken(token);
     setUser(uid);
 
+    // Set token expiration date to 1 hour & store in local storage
     const tokenExpirationDate =
       expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
     setTokenExpirationDate(tokenExpirationDate);
@@ -49,6 +51,7 @@ function App() {
     );
   }, []);
 
+  // Handle logging out
   const logout = useCallback(() => {
     setToken(null);
     setUser(null);
@@ -56,6 +59,7 @@ function App() {
     localStorage.removeItem("userData");
   }, []);
 
+  // Check if user is logged in and set token and expiration date
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("userData"));
     if (
@@ -71,6 +75,7 @@ function App() {
     }
   }, [login]);
 
+  // Log user out when token expires
   useEffect(() => {
     if (token && tokenExpirationDate) {
       const remainingTime =
@@ -81,6 +86,7 @@ function App() {
     }
   }, [token, logout, tokenExpirationDate]);
 
+  // List available routes/pages on the website
   const routes = (
     <Routes>
       <Route path="/" element={<Homepage />} />
@@ -98,6 +104,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-light-bg dark:bg-dark-bg">
+      {/* Provide authentication context to the website */}
       <AuthContext.Provider
         value={{
           isLoggedIn: !!token,
@@ -107,7 +114,9 @@ function App() {
           logout: logout,
         }}
       >
+        {/* Provide query client to the website */}
         <QueryClientProvider client={queryClient}>
+          {/* Provide navbar, routes and footer to the website */}
           <Router>
             <Navbar />
             {routes}

@@ -1,5 +1,6 @@
 import { TextCardCenter } from "../components/TextCard";
 
+// Values page for displaying the values of the hotel using text cards
 const Valuepage = () => {
   return (
     <div className="flex flex-col place-items-center bg-gradient-to-br bg-light-bg dark:bg-dark-bg">

@@ -6,14 +6,17 @@ import { getReservations } from "./api/reservations";
 import { getRooms } from "../reservationpage/api/rooms";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
+// Profile page for displaying user info and reservations
 const Profilepage = () => {
   const auth = useContext(AuthContext);
 
+  // Default image for user
   let defaultImageUrl =
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
 
   const urlRef = useRef();
 
+  // Fetch rooms & user's info and reservations
   const { isLoading, error, data } = useQuery(
     ["userData", auth.token],
     () => getProfile(auth.token),
@@ -42,6 +45,7 @@ const Profilepage = () => {
     data: dataRooms,
   } = useQuery(["rooms"], getRooms);
 
+  // Set user's info
   useEffect(() => {
     if (auth.isLoggedIn) {
       let resData = data;
@@ -60,6 +64,7 @@ const Profilepage = () => {
     }
   }, [data]);
 
+  // Default user data state
   const [userData, setUserData] = useState({
     name: "User Userson",
     email: "user@example.com",
@@ -68,6 +73,7 @@ const Profilepage = () => {
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
   });
 
+  // Handle image change
   const handleFileChange = (e) => {
     e.preventDefault();
     console.log("in handlefile");
@@ -80,6 +86,7 @@ const Profilepage = () => {
 
   let content = "";
 
+  // Display user's info
   if (isLoading) {
     content = <LoadingSpinner />;
   } else if (error) {
@@ -92,7 +99,9 @@ const Profilepage = () => {
             src={userData.image}
             className="aspect-square h-60 object-cover rounded-lg mt-10"
           ></img>
+
           {auth.isLoggedIn && (
+            // Form for changing profile picture: image url and submit button
             <form onSubmit={handleFileChange}>
               <input
                 type="text"
@@ -130,6 +139,7 @@ const Profilepage = () => {
 
   let reservationContent = "";
 
+  // List user's all reservations
   if (isLoadingRes || isLoadingRooms) {
     reservationContent = <LoadingSpinner />;
   } else if (errorRes || errorRooms) {
@@ -142,7 +152,10 @@ const Profilepage = () => {
           <p className="text-base text-light-text">You have no reservations</p>
         )}
         {dataRes.map((dataRes) => {
+          // Find the room that matches the reservation's room_id to get the room's name
           let room = dataRooms.find((room) => room.id === dataRes.room_id);
+
+          // Format start & end dates to be more readable for user
           let startDate = new Date(dataRes.start_date).toLocaleDateString(
             "en-GB",
             {
@@ -158,7 +171,9 @@ const Profilepage = () => {
             month: "numeric",
             day: "numeric",
           });
+
           return (
+            // Reservation info
             <div key={dataRes.id} className="text-base text-light-text py-5">
               <p>Reservation ID: {dataRes.id}</p>
               <p>Room: {room.title}</p>
