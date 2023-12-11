@@ -5,6 +5,7 @@ import List from "../components/List";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
 const ActivityListpage = () => {
+  // State deciding what showing on the page depending if fetch is done, in progress or failed
   const { isLoading, error, data } = useQuery("activities", getActivities);
 
   let content;

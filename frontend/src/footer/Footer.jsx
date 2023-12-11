@@ -3,6 +3,7 @@ import { FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 import { AuthContext } from "../context/auth-context";
 
+// Footer at the bottom of pages
 const Footer = () => {
   const auth = useContext(AuthContext);
 
@@ -14,7 +15,7 @@ const Footer = () => {
     { name: "Contact", link: "/contactpage" },
     ...(auth.isLoggedIn ? [{ name: "Profile", link: "/profile" }] : []),
   ];
-
+  //Display links array, other links
   return (
     <div className="flex flex-col sticky top-[100vh] md:flex-row justify-center bg-haven-red pt-10 px-10 sm:px-20 pb-32 gap-x-10 lg:gap-x-20 xl:gap-x-72 gap-y-10">
       <ul className="flex flex-col">

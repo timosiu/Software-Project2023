@@ -1,3 +1,4 @@
+// Errorbox component showing error given as a prop
 const ErrorBox = (props) => {
   return (
     <div

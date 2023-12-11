@@ -1,6 +1,7 @@
 import { TextCardRight } from "../components/TextCard";
 import ContactImage from "../assets/Contact.jpg";
 
+// Display contactpage, using textcard component
 const Contactpage = () => {
   return (
     <div className="flex flex-col place-items-center bg-gradient-to-br bg-light-bg dark:bg-dark-bg">

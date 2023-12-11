@@ -1,3 +1,5 @@
+// Textcard components aligning given items as prop
+// Components for left, right and center
 const TextCardLeft = ({ title, text, Img, link, linkText }) => {
   return (
     <div className="flex flex-col-reverse sm:flex-row col-span-3 items-center justify-center w-full">

@@ -1,3 +1,4 @@
+// COmponent using a spinner animation with blurred background
 const LoadingSpinner = () => {
   return (
     <div className="absolute inset-0 flex items-center justify-center backdrop-blur">
