@@ -4,10 +4,6 @@ const getActivities = async (req, res) => {
   try {
     const response = await activities.findAll();
     if (response) {
-      // examples how to access service images
-      let array = JSON.parse(response[1].activityImages);
-      console.log(array[0]);
-
       res.status(200).send(response);
     }
   } catch (err) {

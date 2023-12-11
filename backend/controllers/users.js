@@ -37,6 +37,7 @@ const signUpUser = async (req, res) => {
   };
 
   try {
+    // Checks if an user with same email already exists
     const exist = await users.findByEmail(newUser.email);
     if (exist.length > 0) {
       return res
@@ -51,6 +52,7 @@ const signUpUser = async (req, res) => {
         .send({ message: "Could not create user, try again please" });
     }
 
+    // Creates a token, which expires in 1h
     const token = jwt.sign(
       {
         id: newUser.id,
