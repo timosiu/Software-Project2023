@@ -1,3 +1,4 @@
+// Component drawing specific item given as a prop
 const ListItem = ({ item, type }) => {
   const itemImages = JSON.parse(item[`${type}Images`]);
 

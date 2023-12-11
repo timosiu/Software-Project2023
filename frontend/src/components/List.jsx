@@ -1,5 +1,6 @@
 import ListItem from "./ListItem";
 
+// Component handling list data
 const List = ({ data, type }) => {
   if (!data.length) {
     return <h3>No {type} items found</h3>;

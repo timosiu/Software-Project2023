@@ -12,10 +12,14 @@ import { useQuery } from "react-query";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
 const Homepage = () => {
+  // Navigation function for directing another page
   let navigate = useNavigate();
+  // State for fetching rooms
   const { isLoading, error, data } = useQuery("rooms", () => getRooms());
+  // Api key for google maps
   const GOOGLEAPIKEY = import.meta.env.VITE_GOOGLE_API;
 
+  // Setting carousel content depending of isLoading fetching state
   let carouselContent = "";
   if (isLoading) {
     carouselContent = <LoadingSpinner />;
@@ -59,12 +63,13 @@ const Homepage = () => {
       </div>
     );
   }
-
+  // Url to fetch google maps using API key
   let mapUrl =
     "https://www.google.com/maps/embed/v1/place?key=" +
     GOOGLEAPIKEY +
     "&q=Lapinkaari 12, 33180 Tampere";
 
+  // Display page data: photos + text, roomcarousel, book now button, Google maps element
   return (
     <div className="flex flex-col place-items-center bg-light-accent min-h-screen">
       <div
