@@ -7,6 +7,8 @@ const reservations = {
         if (err) {
           return reject(err);
         }
+        // Selects all columns from reservations table and
+        // joins user_name from users table based on matching user_id
         connection.query(
           "SELECT reservations.*, users.name AS user_name FROM reservations LEFT JOIN users on reservations.user_id=users.id;",
           (err, result) => {

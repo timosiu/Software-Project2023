@@ -7,7 +7,6 @@ const users = {
         if (err) {
           return reject(err);
         }
-
         connection.query("INSERT INTO users SET ?;", user, (err, result) => {
           connection.release();
           if (err) {

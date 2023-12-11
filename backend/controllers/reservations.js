@@ -13,6 +13,7 @@ const getReservations = async (req, res) => {
   }
 };
 
+// Sends the reservation data of the user who is logged in.
 const getReservationsByUserId = async (req, res) => {
   try {
     const userId = req.userData.userId;
@@ -51,6 +52,7 @@ const createReservation = async (req, res) => {
   };
 
   try {
+    // Checks if reservation with same room_id, start_date and end_date are already in database
     const result = await reservations.findByReservation(reservation);
     if (result.length > 0) {
       res

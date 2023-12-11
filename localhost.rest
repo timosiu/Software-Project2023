@@ -17,6 +17,7 @@ GET http://localhost:5000/api/reservations
 
 ###
 GET http://localhost:5000/api/reservations/myreservations
+Authorization: BEARER {{authToken}}
 
 ###
 POST http://localhost:5000/api/reviews/1
@@ -39,15 +40,6 @@ Authorization: BEARER {{authToken}}
   "numberOfPeople": 1,
   "startDate": "Thu Dec 07 2023",
   "endDate": "Sat Dec 09 2023"
-}
-
-###
-POST http://localhost:5000/api/forum/1
-Content-Type: application/json
-Authorization: BEARER {{authToken}}
-
-{
-  "message": "Test Message Inside A Thread"
 }
 
 ###

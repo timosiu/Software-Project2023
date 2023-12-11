@@ -1,6 +1,7 @@
 const Joi = require("joi");
 const reviews = require("../models/reviews");
 
+// Sends all the reviews of a certain room, based on the room_id received
 const getReviews = async (req, res) => {
   try {
     const room_id = parseInt(req.params.id);
