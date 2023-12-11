@@ -1,5 +1,7 @@
+/* Navbar title font */
 @import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
 
+/* Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

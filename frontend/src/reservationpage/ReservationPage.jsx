@@ -7,8 +7,10 @@ import RoomList from "./components/RoomList";
 import Calendar from "./components/Calendar";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
+// Reservation page for booking rooms
 const ReservationPage = () => {
   const auth = useContext(AuthContext);
+  // Fetch rooms
   const { isLoading, error, data } = useQuery("rooms", getRooms);
 
   const [roomPrice, setRoomPrice] = useState(0);
@@ -21,6 +23,7 @@ const ReservationPage = () => {
   } else if (error) {
     roomList = <p>Sorry, something went wrong.</p>;
   } else {
+    // pass rooms data to RoomList component
     roomList = (
       <RoomList
         rooms={data}
@@ -30,6 +33,7 @@ const ReservationPage = () => {
     );
   }
 
+  // If user is not logged in, prompt them to login with provided link
   if (!auth.isLoggedIn) {
     return (
       <div className="container mx-auto flex flex-col items-center">
@@ -50,9 +54,11 @@ const ReservationPage = () => {
       <h1 className="text-6xl my-8 mt-28 mb-10">Booking</h1>
       <div className="flex-grow flex-col md:flex-row flex w-full items-center md:items-start">
         <div className="w-3/4 md:w-1/2 p-4 mt-16 text-center">
+          {/* Display calendar for booking */}
           <Calendar roomPrice={roomPrice} roomId={roomId} />
         </div>
         <div className="w-full md:w-1/2 p-4 max-h-screen overflow-y-auto mb-5">
+          {/* Display a list of rooms */}
           {roomList}
         </div>
       </div>

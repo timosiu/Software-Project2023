@@ -4,6 +4,7 @@ import { getServices } from "./api/services";
 import List from "../components/List";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
+// Service list page for displaying the services available at the hotel
 const ServiceListpage = () => {
   const { isLoading, error, data } = useQuery("services", getServices);
   // testing data duplication
@@ -16,6 +17,7 @@ const ServiceListpage = () => {
   } else if (error) {
     content = <p>Sorry, something went wrong.</p>;
   } else {
+    // pass services data to List component
     content = <List data={data} type={"service"} />;
     // testing data using duplicated data
     // content = <ServiceList servies={duplicatedData} />;

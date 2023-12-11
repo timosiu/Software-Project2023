@@ -6,9 +6,12 @@ import { getReviews } from "./api/reviews";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import { TextCardCenter } from "../components/TextCard";
 
+// Room page for displaying room's info and reviews
 const Roompage = () => {
+  // Get room id from url
   const { id } = useParams();
 
+  // Fetch room info and reviews
   const { isLoading, error, data } = useQuery(["room", id], () => getRoom(id));
   const {
     isLoading: isLoadingReviews,
@@ -24,6 +27,7 @@ const Roompage = () => {
     roomInfo = <p>Sorry, something went wrong.</p>;
   } else {
     roomInfo = (
+      // Display room info: image, name/title, description, price, amenities & reviews
       <div className="flex flex-col place-items-center min-h-screen w-full">
         <div
           className="flex flex-col place-items-center min-h-2/3 mx-10 bg-cover bg-center w-full"
@@ -66,6 +70,7 @@ const Roompage = () => {
             </h1>
             <div className="flex flex-row bg-light-accent p-5 justify-center">
               <ul className="grid grid-cols-1 sm:grid-cols-2">
+                {/* Map through amenities and display them in a list */}
                 {JSON.parse(data.amenities).map((amenity) => (
                   <li
                     key={amenity}
@@ -83,9 +88,11 @@ const Roompage = () => {
               Reviews
             </h1>
             <div className="flex flex-col bg-light-accent p-5 pt-0 justify-center mb-20 divide-y divide-light-text">
+              {/* Map through reviews (reviewer's name, profile picture, rating & comment) and display them */}
               {dataReviews.map((review) => (
                 <div key={review.id} className="flex flex-col pt-5">
                   <div className="flex flex-col sm:flex-row">
+                    {/* Reviewer's info */}
                     <img
                       src={review.user_image}
                       alt="user"
@@ -95,13 +102,19 @@ const Roompage = () => {
                       <p className="text-lg text-light-text">
                         {review.user_name}
                       </p>
+
+                      {/* Rating */}
                       <p className="text-lg text-light-text">
                         Rating:{" "}
+                        {/* Based on (int)rating value, display corresponding number of filled stars, and empty stars for the rest */}
+                        {/* Max rating is 5 stars */}
                         {Array.from({ length: 5 }, (_, index) => (
                           <span key={index}>
                             {index < review.rating ? (
+                              // Filled star
                               <span>&#9733;</span>
                             ) : (
+                              // Empty star
                               <span>&#9734;</span>
                             )}
                           </span>
@@ -109,6 +122,8 @@ const Roompage = () => {
                       </p>
                     </div>
                   </div>
+
+                  {/* Review comment */}
                   <p className="text-lg text-light-text mt-3 mb-5">
                     {review.message}
                   </p>

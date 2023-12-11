@@ -3,10 +3,12 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { AuthContext } from "../context/auth-context";
 
+// Navbar component for the website
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const auth = useContext(AuthContext);
 
+  // Links for navbar
   const Links = [
     { name: "Booking", link: "/reservation" },
     { name: "Services", link: "/servicepage" },
@@ -22,10 +24,12 @@ const Navbar = () => {
         <div className="font-ephesis text-4xl md:text-3xl lg:text-4xl cursor-pointer flex items-center text-light-text hover:text-light-accent dark:text-dark-text dark:hover:text-dark-accent duration-500">
           <a href={"/"}>Forest Haven Resort</a>
         </div>
+        {/* Handle the dropdown menu for mobile devices */}
         <div
           onClick={() => setMenuOpen(!menuOpen)}
           className="w-6 text-light-text hover:text-light-accent dark:text-dark-text dark:hover:text-dark-accent duration-500 md:hidden cursor-pointer absolute right-8 top-5"
         >
+          {/* If dropdown menu is open, show XMarkIcon, else show Bars3Icon */}
           {menuOpen ? <XMarkIcon /> : <Bars3Icon />}
         </div>
         <ul
@@ -33,6 +37,7 @@ const Navbar = () => {
             menuOpen ? "" : "hidden"
           }`}
         >
+          {/* Map through the links and display them in the navbar */}
           {Links.map((link) => (
             <li
               key={link.name}
@@ -46,6 +51,8 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+
+          {/* If user is logged in, show profile and logout links, else show login link */}
           <li>
             {auth.isLoggedIn ? (
               <a

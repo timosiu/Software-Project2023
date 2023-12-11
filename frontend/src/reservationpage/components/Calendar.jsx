@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/auth-context";
 
 import "react-datepicker/dist/react-datepicker.css";
 
+// Calendar component used for booking rooms
 const Calendar = ({ roomPrice, roomId }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
@@ -16,20 +17,23 @@ const Calendar = ({ roomPrice, roomId }) => {
 
   const auth = useContext(AuthContext);
 
+  // Calculate nights on date change
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
 
-    // Calculate nights
+    // Calculate nights between start and end dates
     if (start && end) {
       const timeDiff = Math.abs(end.getTime() - start.getTime());
       const nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
       setNights(nights);
     }
   };
+
   return (
     <div>
+      {/* Datepicker for selecting wanted dates */}
       <DatePicker
         placeholderText="CLick to select nights"
         selected={startDate}
@@ -44,6 +48,7 @@ const Calendar = ({ roomPrice, roomId }) => {
         dateFormat={"dd/MM/yyyy"}
       />
 
+      {/* Input for selecting number of people */}
       <div className="mt-4">
         <input
           className="w-10 h-8 px-2"
@@ -55,15 +60,20 @@ const Calendar = ({ roomPrice, roomId }) => {
         />
         <label className="text-xl"> People</label>
       </div>
+
+      {/* Display total price based on selected dates, number of people and room price */}
       <div className="mt-10">
         <h1 className="text-2xl">
           Total Price: {endDate && roomPrice * nights * numberOfPeople}{" "}
           {endDate && "Eur"}{" "}
         </h1>
       </div>
+
+      {/* Button for creating a room reservation */}
       <div className="mt-4">
         <button
           className="bg-haven-red hover:bg-light-accent duration-500 text-5xl py-2 px-4 shadow-2xl"
+          // Create reservation: room id, total cost, number of people, start date and end date
           onClick={async () => {
             const reservation = {
               roomId: roomId,
@@ -72,8 +82,13 @@ const Calendar = ({ roomPrice, roomId }) => {
               startDate: startDate,
               endDate: endDate,
             };
+            // Send reservation data to backend
             const result = await createReservation(reservation, auth.token);
             console.log(result);
+            // Display popup message based on result:
+            // Reservation is in the database already
+            // Reservation created successfully
+            // Failed to create reservation. Please try again.
             if (
               result &&
               result.message === "Reservation is in the database already"

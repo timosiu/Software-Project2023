@@ -7,9 +7,11 @@ import { AuthContext } from "../context/auth-context";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import { ErrorBox } from "../components/ErrorBox";
 
+// Page used for login and signup of users
 const Loginpage = () => {
   const [tab, setTab] = useState(true);
 
+  // Reset input fields on tab change
   useEffect(() => {
     emailRef.current.value = "";
     passwordRef.current.value = "";
@@ -34,6 +36,7 @@ const Loginpage = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
+  // Mutation for signup
   const signUpUserMutation = useMutation({
     mutationFn: signUpUser,
     onSuccess: (data) => {
@@ -46,6 +49,7 @@ const Loginpage = () => {
     },
   });
 
+  // Mutation for login
   const loginUserMutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
@@ -58,11 +62,13 @@ const Loginpage = () => {
     },
   });
 
+  // Submit handler for login and signup
   const onSubmitHandler = (event) => {
     event.preventDefault();
     setAuthError(false);
     setisLoading(true);
 
+    // Mutateable variables based on tab
     if (tab) {
       loginUserMutation.mutate({
         email: emailRef.current.value,
@@ -79,8 +85,10 @@ const Loginpage = () => {
 
   let content;
 
+  // If tab is true, login form is rendered, else signup form is rendered
   if (tab == true) {
     content = (
+      // Login form: email, password and submit button
       <form
         onSubmit={onSubmitHandler}
         className=" space-y-8 md:space-y-10 px-8 pt-6 pb-8 mb-4"
@@ -102,6 +110,7 @@ const Loginpage = () => {
             required=""
           ></input>
         </div>
+
         <div className="">
           <label
             htmlFor="password"
@@ -119,6 +128,7 @@ const Loginpage = () => {
             required=""
           ></input>
         </div>
+
         <div className="flex justify-center">
           <button
             type="submit"
@@ -131,6 +141,7 @@ const Loginpage = () => {
     );
   } else {
     content = (
+      // Signup form: users full name, email, password and submit button
       <form
         onSubmit={onSubmitHandler}
         className=" space-y-8 md:space-y-10 px-8 pt-6 pb-8 mb-4"
@@ -152,6 +163,7 @@ const Loginpage = () => {
             required=""
           ></input>
         </div>
+
         <div className=" mt-10">
           <label
             htmlFor="email"
@@ -169,6 +181,7 @@ const Loginpage = () => {
             required=""
           ></input>
         </div>
+
         <div className="">
           <label
             htmlFor="password"
@@ -186,6 +199,7 @@ const Loginpage = () => {
             required=""
           ></input>
         </div>
+
         <div className="flex justify-center">
           <button
             type="submit"
@@ -201,6 +215,7 @@ const Loginpage = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="inline-flex">
+        {/* Buttons for changing tab / login and signup */}
         <button
           onClick={loginMode}
           className="max-w-md px-10 mt-32
@@ -209,6 +224,7 @@ const Loginpage = () => {
         >
           Sign in
         </button>
+
         <button
           onClick={loginMode}
           className="max-w-md px-10 mt-32
