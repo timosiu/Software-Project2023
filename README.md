@@ -38,7 +38,6 @@ The project is developed using the following technologies:
 - The Frontend is developed using React.js and Styling is done using Tailwind CSS.
 - The Backend is developed using Node.js and Express.js.
 - The Database is developed using MySQL.
-- The project is deployed using Render.
 
 ---
 
@@ -66,7 +65,3 @@ The project is developed using the following technologies:
 #### More information about the project and its development process and procedures can be found in the [wiki](https://github.com/timosiu/Software-Project2023/wiki).
 
 ---
-
-## Project links
-
-#### The project is deployed on Render and can be found [here](https://foresthavenresort.onrender.com/).
